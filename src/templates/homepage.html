@@ -1,0 +1,137 @@
+<!-- Homepage Hero Banner -->
+<section style="text-align: center; padding: var(--space-2xl) 0 var(--space-xl) 0; max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-md);">
+  <h1 style="font-size: 3rem; line-height: 1.1; font-family: var(--font-sans); font-weight: 900;">Find the Right Calculator, <span style="background: linear-gradient(135deg, var(--primary) 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Fast.</span></h1>
+  <p style="font-size: 1.25rem; max-width: 580px; margin: 0 auto;">Access professional math, fitness, financial, and daily tools within a next-generation calculations ecosystem.</p>
+  
+  <!-- Hero Interactive Search Bar Trigger -->
+  <div class="trigger-search" style="margin-top: var(--space-md); cursor: pointer; display: flex; align-items: center; gap: var(--space-md); padding: 14px 20px; background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); transition: border-color var(--transition-fast);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <span style="color: var(--text-muted); font-size: 1.05rem; flex: 1; text-align: left;">Search 190+ calculators (Press '/' or click here)...</span>
+  </div>
+</section>
+
+<!-- Featured Categories Grid -->
+<section style="margin-top: var(--space-xl);">
+  <h2 style="margin-bottom: var(--space-lg); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Featured Categories</h2>
+  <div class="grid-2">
+    <!-- Financial -->
+    <div class="card cat-card">
+      <div class="cat-card-header">
+        <div class="cat-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+        <h3 class="cat-title">Financial Calculators</h3>
+      </div>
+      <p>Analyze interest growth, loan amortization tables, and mortgage breakouts.</p>
+      <ul class="cat-list">
+        <li><a href="/financial/mortgage-calculator/" class="cat-list-link">Mortgage Calculator</a></li>
+        <li><a href="/financial/loan-calculator/" class="cat-list-link">Loan Calculator</a></li>
+        <li><a href="/financial/compound-interest-calculator/" class="cat-list-link">Compound Interest Calculator</a></li>
+      </ul>
+      <div style="margin-top: auto; padding-top: var(--space-sm);">
+        <a href="/financial/" class="btn btn-secondary" style="width: 100%;">Browse Financial ({{STATS_COUNT_financial}})</a>
+      </div>
+    </div>
+
+    <!-- Health -->
+    <div class="card cat-card">
+      <div class="cat-card-header">
+        <div class="cat-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </div>
+        <h3 class="cat-title">Fitness & Health</h3>
+      </div>
+      <p>Estimate weight category percentiles and health indices.</p>
+      <ul class="cat-list">
+        <li><a href="/health/bmi-calculator/" class="cat-list-link">BMI Calculator</a></li>
+      </ul>
+      <div style="margin-top: auto; padding-top: var(--space-sm);">
+        <a href="/health/" class="btn btn-secondary" style="width: 100%;">Browse Health & Fitness ({{STATS_COUNT_health}})</a>
+      </div>
+    </div>
+
+    <!-- Math -->
+    <div class="card cat-card">
+      <div class="cat-card-header">
+        <div class="cat-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="9" x2="19" y2="9"></line><line x1="5" y1="15" x2="19" y2="15"></line><line x1="12" y1="5" x2="12" y2="19"></line></svg>
+        </div>
+        <h3 class="cat-title">Math Calculators</h3>
+      </div>
+      <p>Parse complex trigonometry, functions, and evaluate percentage changes.</p>
+      <ul class="cat-list">
+        <li><a href="/math/scientific-calculator/" class="cat-list-link">Scientific Calculator</a></li>
+        <li><a href="/math/percentage-calculator/" class="cat-list-link">Percentage Calculator</a></li>
+      </ul>
+      <div style="margin-top: auto; padding-top: var(--space-sm);">
+        <a href="/math/" class="btn btn-secondary" style="width: 100%;">Browse Mathematics ({{STATS_COUNT_math}})</a>
+      </div>
+    </div>
+
+    <!-- Other -->
+    <div class="card cat-card">
+      <div class="cat-card-header">
+        <div class="cat-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <h3 class="cat-title">Other Tools</h3>
+      </div>
+      <p>Evaluate exact age periods and perform shifting calendars computations.</p>
+      <ul class="cat-list">
+        <li><a href="/other/age-calculator/" class="cat-list-link">Age Calculator</a></li>
+        <li><a href="/other/date-calculator/" class="cat-list-link">Date Calculator</a></li>
+      </ul>
+      <div style="margin-top: auto; padding-top: var(--space-sm);">
+        <a href="/other/" class="btn btn-secondary" style="width: 100%;">Browse Other Tools ({{STATS_COUNT_other}})</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Tools Grid -->
+<section style="margin-top: var(--space-2xl);">
+  <h2 style="margin-bottom: var(--space-lg); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Popular Calculators</h2>
+  <div class="grid-3">
+    <div class="card hover-lift">
+      <h3 style="font-size: 1.15rem;"><a href="/math/scientific-calculator/">Scientific Calculator</a></h3>
+      <p style="font-size: 0.9rem;">Solve arithmetic formulas, parentheses, exponents, and trig metrics.</p>
+      <div style="margin-top: auto; text-align: right;"><a href="/math/scientific-calculator/" class="btn btn-secondary">Open</a></div>
+    </div>
+    <div class="card hover-lift">
+      <h3 style="font-size: 1.15rem;"><a href="/financial/mortgage-calculator/">Mortgage Calculator</a></h3>
+      <p style="font-size: 0.9rem;">Model purchase estimates, property tax splits, and PMI options.</p>
+      <div style="margin-top: auto; text-align: right;"><a href="/financial/mortgage-calculator/" class="btn btn-secondary">Open</a></div>
+    </div>
+    <div class="card hover-lift">
+      <h3 style="font-size: 1.15rem;"><a href="/health/bmi-calculator/">BMI Calculator</a></h3>
+      <p style="font-size: 0.9rem;">Check body mass classifications against standard CDC health ranges.</p>
+      <div style="margin-top: auto; text-align: right;"><a href="/health/bmi-calculator/" class="btn btn-secondary">Open</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- Dynamic User Layout Sections: Favorites and Recents -->
+<section style="margin-top: var(--space-2xl); display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl);">
+  <!-- Favorites Section -->
+  <div>
+    <h2 style="margin-bottom: var(--space-lg); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; color: var(--alert);"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      Favorite Calculators
+    </h2>
+    <div id="favorites-container" style="display: flex; flex-direction: column; gap: var(--space-md);">
+      <!-- Skeleton Loaders initially, replaced in JS -->
+      <div class="skeleton skeleton-card"></div>
+    </div>
+  </div>
+
+  <!-- Recently Used Section -->
+  <div>
+    <h2 style="margin-bottom: var(--space-lg); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; color: var(--primary);"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      Recently Used
+    </h2>
+    <div id="recent-container" style="display: flex; flex-direction: column; gap: var(--space-md);">
+      <div class="skeleton skeleton-card"></div>
+    </div>
+  </div>
+</section>

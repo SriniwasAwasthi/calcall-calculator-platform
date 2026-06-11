@@ -1,0 +1,2568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Calculators Directory - Search and Browse A-Z</title>
+  <meta name="description" content="View the complete directory of our calculators grouped by categories and alphabetically (A to Z). Filter and search tools instantly.">
+  <meta name="keywords" content="all calculators, calculator directory, alphabetical math tools">
+  <link rel="canonical" href="https://calculist.netlify.app/all/">
+  
+  <!-- SEO Open Graph & Twitter Cards -->
+  
+  <meta property="og:title" content="All Calculators Directory">
+  <meta property="og:description" content="All Calculators Directory listing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://calculist.netlify.app/all/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="All Calculators Directory">
+  <meta name="twitter:description" content="All Calculators Directory listing.">
+  
+  
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/calculators.css">
+  <link rel="stylesheet" href="/css/animations.css">
+
+  <!-- Immediate Theme & Font Setup to Prevent Flashing -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+      
+      const savedFont = localStorage.getItem('font-family');
+      if (savedFont) {
+        document.documentElement.classList.add('font-' + savedFont);
+      }
+    })();
+  </script>
+
+  <!-- Inlined Theme & Font Setup Script for Toggling -->
+  <script type="module">
+    import { toggleTheme } from '/js/theme.js';
+    window.toggleTheme = toggleTheme;
+
+    window.setFontFamily = function(font) {
+      document.documentElement.classList.remove('font-comic', 'font-century', 'font-bell', 'font-times');
+      if (font && font !== 'default') {
+        document.documentElement.classList.add('font-' + font);
+        localStorage.setItem('font-family', font);
+      } else {
+        localStorage.removeItem('font-family');
+      }
+    };
+  </script>
+</head>
+<body class="fade-in">
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo-link">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="9" x2="15" y2="9"></line>
+          <line x1="9" y1="13" x2="15" y2="13"></line>
+          <line x1="9" y1="17" x2="15" y2="17"></line>
+          <line x1="12" y1="9" x2="12" y2="17"></line>
+        </svg>
+        <span>CalcAll</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/financial/" class="nav-link">Financial</a></li>
+          <li><a href="/health/" class="nav-link">Health</a></li>
+          <li><a href="/math/" class="nav-link">Math</a></li>
+          <li><a href="/other/" class="nav-link">Other</a></li>
+          <li><a href="/all/" class="nav-link">All Tools</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Font Selector -->
+        <select class="font-select-dropdown" onchange="window.setFontFamily(this.value)" aria-label="Select Font" title="Change Font" style="background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 0.85rem; cursor: pointer; font-family: var(--font-sans); outline: none;">
+          <option value="default">Outfit (Default)</option>
+          <option value="comic" style="font-family: 'Comic Sans MS', cursive;">Comic Sans</option>
+          <option value="century" style="font-family: 'Century Gothic', sans-serif;">Century</option>
+          <option value="bell" style="font-family: 'Bell MT', serif;">Bell MT</option>
+          <option value="times" style="font-family: 'Times New Roman', serif;">Times New Roman</option>
+        </select>
+        <script>
+          const savedFont = localStorage.getItem('font-family') || 'default';
+          const fontSel = document.querySelector('.font-select-dropdown');
+          if (fontSel) fontSel.value = savedFont;
+        </script>
+
+        <!-- Search Trigger -->
+        <button class="header-btn trigger-search" aria-label="Search Calculators" title="Search (Press /)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <!-- Theme Toggle -->
+        <button class="header-btn" onclick="window.toggleTheme()" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Access Navigation Chips -->
+  <div class="category-bar">
+    <div class="container category-bar-container">
+      <a href="/math/scientific-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+        Scientific
+      </a>
+      <a href="/financial/mortgage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Mortgage
+      </a>
+      <a href="/health/bmi-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        BMI Check
+      </a>
+      <a href="/financial/loan-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        Loans
+      </a>
+      <a href="/financial/compound-interest-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        Compound Growth
+      </a>
+      <a href="/other/age-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Age Calculator
+      </a>
+      <a href="/other/date-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        Date Math
+      </a>
+      <a href="/math/percentage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle><line x1="17.5" y1="6.5" x2="6.5" y2="17.5"></line></svg>
+        Percentages
+      </a>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs & Content Panel -->
+  <main class="main-content">
+    <div class="container">
+      
+    <nav aria-label="Breadcrumb">
+      <ul class="breadcrumb">
+        
+            <li class="breadcrumb-item">
+              <a href="/" class="breadcrumb-link">Home</a>
+            </li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">All Tools</li>
+      </ul>
+    </nav>
+  
+      <!-- All Calculators Page Template -->
+<div class="detail-header-block">
+  <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xs);">
+    <h1 style="font-size: 2.5rem; line-height: 1.1;">All Calculators Directory</h1>
+    <span class="detail-category-badge" style="margin-bottom: 0;"><span id="total-count-badge">191</span> Tools</span>
+  </div>
+  <p class="detail-description" style="font-size: 1.2rem; max-width: 680px;">Browse our complete collection of fitness, mathematical, daily, and financial calculators.</p>
+</div>
+
+<!-- Inline Filtering Controls -->
+<section style="margin-top: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-md);">
+  
+  <!-- Category Selector Tabs -->
+  <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+    <button class="btn btn-secondary filter-cat-btn active" data-cat="all">All Categories</button>
+    <button class="btn btn-secondary filter-cat-btn" data-cat="financial">Financial</button>
+    <button class="btn btn-secondary filter-cat-btn" data-cat="health">Health & Fitness</button>
+    <button class="btn btn-secondary filter-cat-btn" data-cat="math">Math</button>
+    <button class="btn btn-secondary filter-cat-btn" data-cat="other">Other</button>
+  </div>
+
+  <!-- A-Z Alphabetical Nav Bar -->
+  <div style="display: flex; align-items: center; gap: var(--space-sm); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: var(--space-sm) 0; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;">
+    <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-right: var(--space-sm);">Browse A-Z:</span>
+    <button class="btn btn-secondary filter-letter-btn active" data-letter="all" style="padding: 4px 10px; font-size: 0.85rem;">All</button>
+    <!-- Dynamic buttons from A to Z will be hardcoded below for speed & zero-dependency robustness -->
+    <button class="btn btn-secondary filter-letter-btn" data-letter="A" style="padding: 4px 10px; font-size: 0.85rem;">A</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="B" style="padding: 4px 10px; font-size: 0.85rem;">B</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="C" style="padding: 4px 10px; font-size: 0.85rem;">C</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="D" style="padding: 4px 10px; font-size: 0.85rem;">D</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="E" style="padding: 4px 10px; font-size: 0.85rem;">E</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="F" style="padding: 4px 10px; font-size: 0.85rem;">F</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="G" style="padding: 4px 10px; font-size: 0.85rem;">G</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="H" style="padding: 4px 10px; font-size: 0.85rem;">H</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="I" style="padding: 4px 10px; font-size: 0.85rem;">I</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="J" style="padding: 4px 10px; font-size: 0.85rem;">J</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="K" style="padding: 4px 10px; font-size: 0.85rem;">K</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="L" style="padding: 4px 10px; font-size: 0.85rem;">L</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="M" style="padding: 4px 10px; font-size: 0.85rem;">M</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="N" style="padding: 4px 10px; font-size: 0.85rem;">N</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="O" style="padding: 4px 10px; font-size: 0.85rem;">O</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="P" style="padding: 4px 10px; font-size: 0.85rem;">P</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="Q" style="padding: 4px 10px; font-size: 0.85rem;">Q</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="R" style="padding: 4px 10px; font-size: 0.85rem;">R</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="S" style="padding: 4px 10px; font-size: 0.85rem;">S</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="T" style="padding: 4px 10px; font-size: 0.85rem;">T</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="U" style="padding: 4px 10px; font-size: 0.85rem;">U</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="V" style="padding: 4px 10px; font-size: 0.85rem;">V</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="W" style="padding: 4px 10px; font-size: 0.85rem;">W</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="X" style="padding: 4px 10px; font-size: 0.85rem;">X</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="Y" style="padding: 4px 10px; font-size: 0.85rem;">Y</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="Z" style="padding: 4px 10px; font-size: 0.85rem;">Z</button>
+  </div>
+
+  <!-- Search Within Directory Bar -->
+  <div style="display: flex; gap: var(--space-md);">
+    <input type="text" id="dir-search-input" class="form-input" placeholder="Search within directory..." style="max-width: 480px;">
+    <!-- Alphabetical Sorting Toggle -->
+    <select id="dir-sort-select" class="form-select" style="max-width: 200px;">
+      <option value="asc">Sort A to Z</option>
+      <option value="desc">Sort Z to A</option>
+    </select>
+  </div>
+</section>
+
+<!-- Output Directory list -->
+<section style="margin-top: var(--space-xl);">
+  <!-- Visual lists grouped by category initially, but dynamic under search/sort -->
+  <div id="directory-content-wrapper">
+    
+      <div class="dir-group-section" data-group-cat="financial" style="margin-bottom: var(--space-xl);">
+        <h3 style="font-size: 1.35rem; border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs); margin-bottom: var(--space-md); display: flex; align-items: center; gap: var(--space-sm);">
+          Financial Calculators
+        </h3>
+        <div class="grid-3">
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Mortgage Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/mortgage-calculator/">Mortgage Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate your monthly mortgage payments including principal, interest, taxes, insurance, and HOA fees.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/mortgage-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Amortization Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/amortization-calculator/">Amortization Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Generate a complete monthly or yearly schedule for paying off mortgages and standard term loans.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/amortization-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Mortgage Payoff Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/mortgage-payoff-calculator/">Mortgage Payoff Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine how much time and interest expense you save by adding extra payments to your mortgage.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/mortgage-payoff-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="House Affordability Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/house-affordability-calculator/">House Affordability Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate an affordable home purchase budget based on income, debt, and down payments.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/house-affordability-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Rent Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/rent-calculator/">Rent Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your target rent budget using the standard 30% household gross income rule.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/rent-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Debt-to-Income Ratio Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/debt-to-income-ratio-calculator/">Debt-to-Income Ratio Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your Debt-to-Income (DTI) ratio, a crucial metric evaluated during loan application approvals.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/debt-to-income-ratio-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Real Estate Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/real-estate-calculator/">Real Estate Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Evaluate property investment deals including capitalization rates, cash flow projections, and ROI metrics.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/real-estate-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Refinance Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/refinance-calculator/">Refinance Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the financial benefits and break-even timeline of refinancing an existing mortgage.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/refinance-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Rental Property Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/rental-property-calculator/">Rental Property Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Detailed analysis of rental property investments, including financing, income, expenses, and returns.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/rental-property-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="APR Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/apr-calculator/">APR Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the Annual Percentage Rate (APR) of a loan including fees and closing costs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/apr-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="FHA Loan Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/fha-loan-calculator/">FHA Loan Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate payments for FHA government home loans including upfront and annual MIP charges.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/fha-loan-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="VA Mortgage Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/va-mortgage-calculator/">VA Mortgage Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate military VA home loan payments including VA funding fees.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/va-mortgage-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Home Equity Loan Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/home-equity-loan-calculator/">Home Equity Loan Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your maximum available home equity borrowing limit based on LTV bounds.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/home-equity-loan-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="HELOC Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/heloc-calculator/">HELOC Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate monthly interest-only payments during the draw period of a HELOC line of credit.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/heloc-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Down Payment Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/down-payment-calculator/">Down Payment Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate how much down payment you need based on target percentages, and how long to save for it.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/down-payment-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Rent vs. Buy Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/rent-vs-buy-calculator/">Rent vs. Buy Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compare the total financial cost of renting vs buying a home over a specified time horizon.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/rent-vs-buy-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Auto Loan Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/auto-loan-calculator/">Auto Loan Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate monthly payments and total interest for a car loan, including taxes and trade-ins.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/auto-loan-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Cash Back or Low Interest Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/cash-back-or-low-interest-calculator/">Cash Back or Low Interest Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compare taking auto manufacturer cash rebates vs low interest financing promotions.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/cash-back-or-low-interest-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Auto Lease Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/auto-lease-calculator/">Auto Lease Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine monthly payments for auto leases including depreciation and finance money factors.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/auto-lease-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Interest Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/interest-calculator/">Interest Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate simple or compound interest returns over time on basic principal deposits.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/interest-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Investment Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/investment-calculator/">Investment Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Model the future value of investments incorporating recurring contributions and interest rates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/investment-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Finance Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/finance-calculator/">Finance Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Solve Time Value of Money (TVM) formulas, calculating present values or investment payments.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/finance-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Compound Interest Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/compound-interest-calculator/">Compound Interest Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the future value of your investments using starting capital, interest compounding, and periodic contributions.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/compound-interest-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Interest Rate Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/interest-rate-calculator/">Interest Rate Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the exact annual rate required to grow capital to a target amount over time.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/interest-rate-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Savings Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/savings-calculator/">Savings Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the monthly savings required to accumulate a specific future target.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/savings-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Simple Interest Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/simple-interest-calculator/">Simple Interest Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate basic linear simple interest earnings using standard P-R-T equations.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/simple-interest-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="CD Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/cd-calculator/">CD Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate Certificates of Deposit (CD) future values and APY earnings.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/cd-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Bond Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/bond-calculator/">Bond Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate bond values, coupon payments, and yield to maturity (YTM) rates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/bond-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Mutual Fund Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/mutual-fund-calculator/">Mutual Fund Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Project future mutual fund investment values while subtracting expense ratios and fees.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/mutual-fund-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Average Return Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/average-return-calculator/">Average Return Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the arithmetic and geometric average returns of a series of annual returns.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/average-return-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="IRR Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/irr-calculator/">IRR Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the Internal Rate of Return (IRR) for cash flows over time.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/irr-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="ROI Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/roi-calculator/">ROI Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the Return on Investment (ROI) and annualized ROI for arbitrary assets.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/roi-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Payback Period Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/payback-period-calculator/">Payback Period Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine how long it takes for an investment to recover its initial cost.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/payback-period-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Present Value Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/present-value-calculator/">Present Value Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the present value (PV) of a future cash amount based on discount rates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/present-value-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Future Value Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/future-value-calculator/">Future Value Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the future value (FV) of a present investment growing at a constant interest rate.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/future-value-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Retirement Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/retirement-calculator/">Retirement Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Project your retirement nest egg and determine if your current savings rate will meet your target expenses.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/retirement-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="401K Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/401k-calculator/">401K Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate the growth of your 401(k) retirement account, incorporating employer match contributions.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/401k-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Pension Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/pension-calculator/">Pension Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate defined pension benefits based on service tenure and salary metrics.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/pension-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Social Security Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/social-security-calculator/">Social Security Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate Social Security retirement benefits based on birth year and historical average earnings.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/social-security-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Annuity Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/annuity-calculator/">Annuity Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the future value of an annuity with regular premium deposits.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/annuity-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Annuity Payout Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/annuity-payout-calculator/">Annuity Payout Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine how long your retirement savings will last under regular withdrawal schedules.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/annuity-payout-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Roth IRA Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/roth-ira-calculator/">Roth IRA Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Project your Roth IRA growth, showing tax-free retirement withdrawal benefits.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/roth-ira-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="IRA Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/ira-calculator/">IRA Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Project traditional pre-tax IRA retirement growth and estimate upfront tax deduction savings.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/ira-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="RMD Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/rmd-calculator/">RMD Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your IRS Required Minimum Distribution (RMD) based on account balances and age thresholds.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/rmd-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Income Tax Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/income-tax-calculator/">Income Tax Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate your federal progressive income tax liabilities and net take-home earnings.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/income-tax-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Salary Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/salary-calculator/">Salary Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Convert hourly pay wages to weekly, bi-weekly, monthly, and annual salaries.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/salary-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Marriage Tax Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/marriage-tax-calculator/">Marriage Tax Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine if filing jointly with a spouse results in a marriage tax penalty or bonus.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/marriage-tax-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Estate Tax Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/estate-tax-calculator/">Estate Tax Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate estate tax obligations on asset transfers exceeding threshold exclusions.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/estate-tax-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Take-Home-Paycheck Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/take-home-paycheck-calculator/">Take-Home-Paycheck Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your net take-home salary paycheck after FICA and tax withholdings.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/take-home-paycheck-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Loan Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/loan-calculator/">Loan Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your monthly payment, interest expense, and view a complete amortization schedule for standard loans.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/loan-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Payment Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/payment-calculator/">Payment Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine standard recurring payments for mortgages or loans.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/payment-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Currency Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/currency-calculator/">Currency Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Convert currency amounts using standard exchange ratios.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/currency-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Inflation Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/inflation-calculator/">Inflation Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate historical purchasing power changes based on average inflation rates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/inflation-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Sales Tax Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/sales-tax-calculator/">Sales Tax Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the total retail cost of items including local sales tax rates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/sales-tax-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Credit Card Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/credit-card-calculator/">Credit Card Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the monthly payment and time required to clear credit card debt balances.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/credit-card-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Credit Cards Payoff Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/credit-cards-payoff-calculator/">Credit Cards Payoff Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate optimal repayment strategies for multiple credit card accounts.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/credit-cards-payoff-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Debt Payoff Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/debt-payoff-calculator/">Debt Payoff Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine repayment timelines under standard debt snowball or avalanche methods.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/debt-payoff-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Debt Consolidation Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/debt-consolidation-calculator/">Debt Consolidation Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compare consolidating multiple high interest debts into a single lower interest loan.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/debt-consolidation-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Repayment Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/repayment-calculator/">Repayment Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the monthly repayment amounts and interest costs of a basic term loan.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/repayment-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Student Loan Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/student-loan-calculator/">Student Loan Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate student loan payments and estimate savings from accelerated repayments.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/student-loan-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="College Cost Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/college-cost-calculator/">College Cost Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Plan savings goals for future university tuition and boarding costs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/college-cost-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="VAT Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/vat-calculator/">VAT Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Add or remove Value Added Tax (VAT) from purchase retail listings.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/vat-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Depreciation Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/depreciation-calculator/">Depreciation Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate assets write-downs using straight-line or declining balance rules.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/depreciation-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Margin Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/margin-calculator/">Margin Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine markup, cost, revenue, and gross profit margin percentages for business pricing.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/margin-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Discount Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/discount-calculator/">Discount Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the final price and net savings of items marked with discount percentages.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/discount-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Business Loan Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/business-loan-calculator/">Business Loan Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate monthly payments and amortization terms for commercial enterprise financing.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/business-loan-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Personal Loan Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/personal-loan-calculator/">Personal Loan Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine installment payments for unsecured personal loans.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/personal-loan-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Boat Loan Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/boat-loan-calculator/">Boat Loan Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine payment amortizations for leisure boats and yachts.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/boat-loan-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Lease Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/lease-calculator/">Lease Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">General equipment or vehicle lease payment estimator.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/lease-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Budget Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/budget-calculator/">Budget Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Allocate income based on the 50/30/20 budget framework (Needs, Wants, Savings).</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/budget-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Commission Calculator" data-calc-cat="financial">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/financial/commission-calculator/">Commission Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Financial</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine total earnings from base salary plus sales commission structures.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/financial/commission-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="dir-group-section" data-group-cat="health" style="margin-bottom: var(--space-xl);">
+        <h3 style="font-size: 1.35rem; border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs); margin-bottom: var(--space-md); display: flex; align-items: center; gap: var(--space-sm);">
+          Fitness & Health Calculators
+        </h3>
+        <div class="grid-3">
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="BMI Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/bmi-calculator/">BMI Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate your Body Mass Index (BMI) to understand if your weight is in a healthy range relative to your height.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/bmi-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Calorie Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/calorie-calculator/">Calorie Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your daily calorie needs for weight maintenance, weight loss, or weight gain based on activity levels.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/calorie-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Body Fat Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/body-fat-calculator/">Body Fat Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate your body fat percentage using the standard US Navy circumference method.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/body-fat-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="BMR Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/bmr-calculator/">BMR Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your Basal Metabolic Rate (BMR), the minimum daily energy expenditure needed at rest.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/bmr-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Ideal Weight Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/ideal-weight-calculator/">Ideal Weight Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate your target healthy body weight based on height and gender using standard formulas.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/ideal-weight-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Pace Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/pace-calculator/">Pace Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Convert distance and time bounds to determine running paces or speeds.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/pace-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Army Body Fat Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/army-body-fat-calculator/">Army Body Fat Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine compliance with US Army height-weight fat standard tests.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/army-body-fat-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Lean Body Mass Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/lean-body-mass-calculator/">Lean Body Mass Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your Lean Body Mass (LBM), excluding body fat weight.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/lean-body-mass-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Healthy Weight Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/healthy-weight-calculator/">Healthy Weight Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your recommended weight range corresponding to standard healthy BMIs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/healthy-weight-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Calories Burned Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/calories-burned-calculator/">Calories Burned Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the calories burned during physical exercises using MET standards.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/calories-burned-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="One Rep Max Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/one-rep-max-calculator/">One Rep Max Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your maximum lifting capacity from sub-maximal repetitions.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/one-rep-max-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Target Heart Rate Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/target-heart-rate-calculator/">Target Heart Rate Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your aerobic exercise target heart rate zones using age metrics.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/target-heart-rate-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Pregnancy Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/pregnancy-calculator/">Pregnancy Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate pregnancy progression, current gestational age, and due dates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/pregnancy-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Pregnancy Weight Gain Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/pregnancy-weight-gain-calculator/">Pregnancy Weight Gain Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Recommends healthy pregnancy weight gain targets based on pre-pregnancy BMI levels.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/pregnancy-weight-gain-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Pregnancy Conception Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/pregnancy-conception-calculator/">Pregnancy Conception Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate the approximate date range when conception occurred based on due date.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/pregnancy-conception-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Due Date Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/due-date-calculator/">Due Date Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your estimated due date using standard Naegele's rule calculations.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/due-date-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Ovulation Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/ovulation-calculator/">Ovulation Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your monthly fertile window and peak ovulation dates based on cycles length.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/ovulation-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Conception Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/conception-calculator/">Conception Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate conception dates based on Last Menstrual Period (LMP) dates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/conception-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Period Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/period-calculator/">Period Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Forecast future menstrual cycle period dates over the next six months.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/period-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Macro Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/macro-calculator/">Macro Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate daily carbohydrate, protein, and fat intake distribution targets.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/macro-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Carbohydrate Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/carbohydrate-calculator/">Carbohydrate Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Recommends daily carbohydrate gram intake targets based on energy expenditures.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/carbohydrate-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Protein Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/protein-calculator/">Protein Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine daily protein requirements for muscle maintenance and training goals.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/protein-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Fat Intake Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/fat-intake-calculator/">Fat Intake Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine healthy daily dietary fat gram limits.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/fat-intake-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="TDEE Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/tdee-calculator/">TDEE Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate your Total Daily Energy Expenditure (TDEE) based on metabolic BMR and activity levels.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/tdee-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="GFR Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/gfr-calculator/">GFR Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine kidney health Glomerular Filtration Rates (eGFR) using creatinine and demographic inputs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/gfr-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Body Type Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/body-type-calculator/">Body Type Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your body shape category based on bust, waist, and hip measurements.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/body-type-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Body Surface Area Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/body-surface-area-calculator/">Body Surface Area Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the total surface area of the human body using the standard Mosteller formula.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/body-surface-area-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="BAC Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/bac-calculator/">BAC Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate blood alcohol concentration (BAC) levels over time using the Widmark formula.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/bac-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Molarity Calculator" data-calc-cat="health">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/health/molarity-calculator/">Molarity Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Fitness</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate chemistry solution molarity, solute mass, or volume concentration.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/health/molarity-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="dir-group-section" data-group-cat="math" style="margin-bottom: var(--space-xl);">
+        <h3 style="font-size: 1.35rem; border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs); margin-bottom: var(--space-md); display: flex; align-items: center; gap: var(--space-sm);">
+          Math Calculators
+        </h3>
+        <div class="grid-3">
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Scientific Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/scientific-calculator/">Scientific Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">An interactive, fully featured scientific calculator supporting trigonometric functions, logs, exponents, and order of operations.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/scientific-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Percentage Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/percentage-calculator/">Percentage Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Quickly calculate percentages, find percentage difference, calculate increases/decreases, and solve percentage fractions.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/percentage-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Fraction Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/fraction-calculator/">Fraction Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Add, subtract, multiply, and divide fractions. Supports mixed numbers and simplifies fractions to their simplest form.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/fraction-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Random Number Generator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/random-number-generator/">Random Number Generator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Generate a truly random number or list of random numbers within a specified range.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/random-number-generator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Percent Error Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/percent-error-calculator/">Percent Error Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the percentage error between an experimental/observed value and a theoretical/actual value.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/percent-error-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Exponent Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/exponent-calculator/">Exponent Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Evaluate exponents, computes powers of any base number raised to any power.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/exponent-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Binary Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/binary-calculator/">Binary Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Perform arithmetic operations (addition, subtraction, multiplication, and division) on binary numbers.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/binary-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Hex Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/hex-calculator/">Hex Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Add, subtract, multiply, and divide hexadecimal numbers. Supports conversions to binary and decimal.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/hex-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Half-Life Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/half-life-calculator/">Half-Life Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Solve exponential decay math using the half-life equation. Find remaining quantities, initial quantity, or elapsed time.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/half-life-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Quadratic Formula Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/quadratic-formula-calculator/">Quadratic Formula Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Find real and complex roots of a quadratic equation using the quadratic formula solver.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/quadratic-formula-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Log Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/log-calculator/">Log Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate logarithm values for any positive base including natural log (ln) and common log (log10).</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/log-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Ratio Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/ratio-calculator/">Ratio Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Simplify ratios or solve proportions of equivalent fractions (A : B = C : D).</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/ratio-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Root Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/root-calculator/">Root Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compute square root, cube root, or any n-th root of a positive real number.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/root-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Least Common Multiple Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/lcm-calculator/">Least Common Multiple Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Find the Least Common Multiple (LCM) of two or three numbers instantly.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/lcm-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Greatest Common Factor Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/gcf-calculator/">Greatest Common Factor Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Find the Greatest Common Factor (GCF/GCD) of two or three numbers.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/gcf-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Factor Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/factor-calculator/">Factor Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Find all factor divisors of an integer, checks if it is prime, and lists prime factorizations.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/factor-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Rounding Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/rounding-calculator/">Rounding Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Round numbers to decimal places, significant figures, or nearest integer bounds.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/rounding-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Matrix Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/matrix-calculator/">Matrix Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Perform addition, subtraction, multiplication, and determinant equations on 2x2 matrices.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/matrix-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Scientific Notation Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/scientific-notation-calculator/">Scientific Notation Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Add, subtract, multiply, and divide numbers expressed in scientific notation.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/scientific-notation-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Big Number Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/big-number-calculator/">Big Number Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Multiply, divide, add, and subtract extremely large integers without truncation.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/big-number-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Standard Deviation Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/standard-deviation-calculator/">Standard Deviation Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compute the standard deviation, variance, mean, and count of a dataset.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/standard-deviation-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Number Sequence Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/number-sequence-calculator/">Number Sequence Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Generate terms and find sums of arithmetic and geometric sequences.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/number-sequence-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Sample Size Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/sample-size-calculator/">Sample Size Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the required sample size for a survey based on population size, confidence, and error limits.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/sample-size-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Probability Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/probability-calculator/">Probability Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate standard probability distributions, single event outcomes, or unions/intersections.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/probability-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Statistics Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/statistics-calculator/">Statistics Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Descriptive statistics solver: Mean, Median, Range, Outliers, Variance, and standard graphs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/statistics-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Mean, Median, Mode, Range Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/mean-median-mode-range-calculator/">Mean, Median, Mode, Range Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Dedicated calculator to compute mean, median, mode, and range values of datasets.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/mean-median-mode-range-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Permutation and Combination Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/permutation-combination-calculator/">Permutation and Combination Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the number of permutations (ordered lists) and combinations (unordered subsets) of size r from a set of size n.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/permutation-combination-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Z-score Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/z-score-calculator/">Z-score Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate Z-scores from raw scores, population means, and standard deviations.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/z-score-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Confidence Interval Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/confidence-interval-calculator/">Confidence Interval Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine confidence intervals of population means given sample variables.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/confidence-interval-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Triangle Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/triangle-calculator/">Triangle Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Solve all sides and angles of a triangle based on partially entered measurements.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/triangle-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Volume Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/volume-calculator/">Volume Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the volumes of common solid shapes including sphere, cylinder, cone, and rectangular prism.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/volume-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Slope Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/slope-calculator/">Slope Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate slopes, linear distances, and line angles between two coordinates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/slope-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Area Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/area-calculator/">Area Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Solve the surface area size of 2D shapes including circles, rectangles, triangles, and ellipses.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/area-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Distance Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/distance-calculator/">Distance Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Find the straight-line Cartesian distance between two coordinates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/distance-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Circle Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/circle-calculator/">Circle Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate radius, diameter, circumference, and area of a circle from any single known dimension.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/circle-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Surface Area Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/surface-area-calculator/">Surface Area Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the surface areas of spheres, cylinders, cones, and boxes.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/surface-area-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Pythagorean Theorem Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/pythagorean-theorem-calculator/">Pythagorean Theorem Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate hypotenuse or side lengths of a right triangle using the Pythagorean theorem solver.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/pythagorean-theorem-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Right Triangle Calculator" data-calc-cat="math">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/math/right-triangle-calculator/">Right Triangle Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Math</span>
+              </div>
+              <p style="font-size: 0.85rem;">Dedicated right triangle solver using trigonometry relationships (SOH CAH TOA).</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/math/right-triangle-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="dir-group-section" data-group-cat="other" style="margin-bottom: var(--space-xl);">
+        <h3 style="font-size: 1.35rem; border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs); margin-bottom: var(--space-md); display: flex; align-items: center; gap: var(--space-sm);">
+          Other Calculators
+        </h3>
+        <div class="grid-3">
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Age Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/age-calculator/">Age Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your exact age in years, months, days, weeks, and seconds relative to any date.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/age-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Date Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/date-calculator/">Date Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Add or subtract days to a date, or calculate the total number of days between two calendar dates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/date-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Time Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/time-calculator/">Time Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Add, subtract, and convert times in hours, minutes, and seconds.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/time-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Hours Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/hours-calculator/">Hours Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Sum hours worked over standard shifts for wage audits.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/hours-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Time Card Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/time-card-calculator/">Time Card Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate total hours worked and gross pay based on timesheet shift entries.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/time-card-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Time Zone Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/time-zone-calculator/">Time Zone Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Convert a local calendar time to another standard global time zone coordinate.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/time-zone-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Time Duration Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/time-duration-calculator/">Time Duration Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate elapsed time duration in hours, minutes, and seconds between two times.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/time-duration-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Day Counter" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/day-counter/">Day Counter</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Count the number of calendar days between two custom dates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/day-counter/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Day of the Week Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/day-of-the-week-calculator/">Day of the Week Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Find the day of the week (e.g. Monday, Tuesday) for any date in history.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/day-of-the-week-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Concrete Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/concrete-calculator/">Concrete Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate cubic yards of concrete needed for slabs and foundations.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/concrete-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="BTU Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/btu-calculator/">BTU Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate the heating and cooling BTUs needed for a room's square footage size.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/btu-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Square Footage Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/square-footage-calculator/">Square Footage Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate square footage areas for flooring, landscaping, and tiling rooms.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/square-footage-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Stair Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/stair-calculator/">Stair Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compute stair riser counts, tread runs, and stringer angles from vertical rises.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/stair-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Roofing Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/roofing-calculator/">Roofing Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate the number of shingles bundles and squares required for roofing jobs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/roofing-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Tile Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/tile-calculator/">Tile Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the number of tiles needed for floors or walls, accounting for waste layout margins.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/tile-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Mulch Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/mulch-calculator/">Mulch Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine cubic yards of mulch needed for landscaping beds.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/mulch-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Gravel Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/gravel-calculator/">Gravel Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate how many tons of gravel are required to fill driveways or paths.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/gravel-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Height Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/height-calculator/">Height Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Forecast a child's adult height based on parents' height metrics.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/height-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Conversion Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/conversion-calculator/">Conversion Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Convert basic physical measurement units between metric and imperial systems.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/conversion-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="GDP Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/gdp-calculator/">GDP Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate Gross Domestic Product (GDP) using the standard expenditure approach.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/gdp-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Density Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/density-calculator/">Density Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compute the density, mass, or volume of a material given any two variables.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/density-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Mass Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/mass-calculator/">Mass Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine mass from volume and density inputs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/mass-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Weight Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/weight-calculator/">Weight Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the gravitational weight force of a mass on different planets.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/weight-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Speed Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/speed-calculator/">Speed Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine average speed from travel distance and duration.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/speed-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Molecular Weight Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/molecular-weight-calculator/">Molecular Weight Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compute the molecular weight of simple chemical formulas.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/molecular-weight-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Roman Numeral Converter" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/roman-numeral-converter/">Roman Numeral Converter</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Convert standard integers to Roman numerals and vice versa.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/roman-numeral-converter/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Voltage Drop Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/voltage-drop-calculator/">Voltage Drop Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine voltage drop levels across electrical wire runs based on resistance.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/voltage-drop-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Resistor Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/resistor-calculator/">Resistor Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate total parallel resistance or decode resistor color bands.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/resistor-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Ohms Law Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/ohms-law-calculator/">Ohms Law Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Solve Ohm's law variables: Voltage, Current, and Resistance (V = I x R).</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/ohms-law-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Electricity Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/electricity-calculator/">Electricity Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine power usage cost from equipment wattages and utility rates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/electricity-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="IP Subnet Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/ip-subnet-calculator/">IP Subnet Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Parse IP addresses and CIDR subnets to determine network, broadcast, and host count bounds.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/ip-subnet-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Password Generator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/password-generator/">Password Generator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Generate highly secure random passwords incorporating custom character filters.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/password-generator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Bandwidth Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/bandwidth-calculator/">Bandwidth Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Convert download file sizes and connection speeds to estimate transfer times.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/bandwidth-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Base64 Encode / Decode" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/base64-encode-decode/">Base64 Encode / Decode</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Encode binary data or strings into Base64 formats and vice versa.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/base64-encode-decode/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="URL Encode / Decode" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/url-encode-decode/">URL Encode / Decode</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Encode or decode strings to make them safe for URL transmission.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/url-encode-decode/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="GPA Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/gpa-calculator/">GPA Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate your cumulative Grade Point Average (GPA) based on letter grades and credit weights.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/gpa-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Grade Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/grade-calculator/">Grade Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine your test score percentage and letter grade based on questions answered correctly.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/grade-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Bra Size Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/bra-size-calculator/">Bra Size Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate standard bra band and cup sizes based on underbust and bust measurements.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/bra-size-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Shoe Size Conversion" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/shoe-size-conversion/">Shoe Size Conversion</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Convert shoe sizes between US, UK, and European standards.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/shoe-size-conversion/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Tip Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/tip-calculator/">Tip Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate restaurant tips and split total bills among dinner guests.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/tip-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Golf Handicap Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/golf-handicap-calculator/">Golf Handicap Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine golf score differentials and handicap indexes based on course ratings.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/golf-handicap-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Sleep Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/sleep-calculator/">Sleep Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine optimal sleep and wakeup schedules using 90-minute REM sleep cycle intervals.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/sleep-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Wind Chill Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/wind-chill-calculator/">Wind Chill Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate feels-like wind chill temperatures in cold weather.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/wind-chill-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Heat Index Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/heat-index-calculator/">Heat Index Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Compute feels-like heat index temperatures based on humidity.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/heat-index-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Dew Point Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/dew-point-calculator/">Dew Point Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine the dew point temperature from humidity inputs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/dew-point-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Fuel Cost Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/fuel-cost-calculator/">Fuel Cost Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate the total fuel cost for a road trip based on distance, mpg, and gas prices.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/fuel-cost-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Gas Mileage Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/gas-mileage-calculator/">Gas Mileage Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Evaluate your car's fuel efficiency (MPG / L/100km) based on odometer logs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/gas-mileage-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Horsepower Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/horsepower-calculator/">Horsepower Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate mechanical engine horsepower from torque and RPM readings.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/horsepower-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Engine Horsepower Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/engine-horsepower-calculator/">Engine Horsepower Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Estimate engine horsepower based on quarter-mile trap speeds and vehicle weights.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/engine-horsepower-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Mileage Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/mileage-calculator/">Mileage Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Determine business travel mileage reimbursements based on distance and rates.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/mileage-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Tire Size Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/tire-size-calculator/">Tire Size Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Calculate overall tire diameter, sidewall height, and speedometer error from code specs.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/tire-size-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Dice Roller" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/dice-roller/">Dice Roller</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">Roll multi-sided gaming dice (D6, D20, D100) using random distributions.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/dice-roller/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+            <div class="card hover-lift dir-calc-card" data-calc-name="Love Calculator" data-calc-cat="other">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <h4 style="font-size: 1.1rem;"><a href="/other/love-calculator/">Love Calculator</a></h4>
+                <span class="search-result-cat" style="font-size: 0.7rem;">Other</span>
+              </div>
+              <p style="font-size: 0.85rem;">A fun compatibility calculator based on name hashing algorithms.</p>
+              <div style="margin-top: auto; text-align: right;">
+                <a href="/other/love-calculator/" class="btn btn-secondary" style="padding: 4px 12px; font-size: 0.8rem;">Open</a>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-branding">
+          <a href="/" class="logo-link">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="9" x2="15" y2="9"></line>
+              <line x1="9" y1="13" x2="15" y2="13"></line>
+              <line x1="9" y1="17" x2="15" y2="17"></line>
+              <line x1="12" y1="9" x2="12" y2="17"></line>
+            </svg>
+            <span>CalcAll</span>
+          </a>
+          <p class="footer-desc">A premium next-generation calculations engine for fast, modern, and detailed mathematical analysis.</p>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Calculators: <strong id="footer-total-count">191</strong>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="/financial/" class="footer-link">Financial (71)</a></li>
+            <li><a href="/health/" class="footer-link">Fitness & Health (29)</a></li>
+            <li><a href="/math/" class="footer-link">Math (38)</a></li>
+            <li><a href="/other/" class="footer-link">Other (53)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="/all/" class="footer-link">All Calculators</a></li>
+            <li><a href="/sitemap/" class="footer-link">HTML Sitemap</a></li>
+            <li><a href="/sitemap.xml" class="footer-link">XML Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">Built using native, zero-dependency static page hydration. Fast, accessible, and SEO optimized.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 CalcAll. All rights reserved. Designed for optimal speed and UX.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Autocomplete Search Initialization -->
+  <script type="module">
+    import { calculators } from '/js/calculators.js';
+    import { initSearch } from '/js/search.js';
+    
+    // Initialize Global Search listeners
+    initSearch(calculators);
+  </script>
+
+  <!-- Page-Specific Script Injection -->
+  
+      <script type="module">
+        // Alphabetical A-Z and Category Filter Logic on the All Directory page
+        const catButtons = document.querySelectorAll('.filter-cat-btn');
+        const letterButtons = document.querySelectorAll('.filter-letter-btn');
+        const searchInput = document.getElementById('dir-search-input');
+        const sortSelect = document.getElementById('dir-sort-select');
+        const countBadge = document.getElementById('total-count-badge');
+
+        const sections = document.querySelectorAll('.dir-group-section');
+        const cards = document.querySelectorAll('.dir-calc-card');
+
+        let activeCat = 'all';
+        let activeLetter = 'all';
+        let searchQuery = '';
+
+        function filter() {
+          let visibleCount = 0;
+          
+          sections.forEach(section => {
+            const sectionCat = section.getAttribute('data-group-cat');
+            let sectionVisible = false;
+
+            const sectionCards = section.querySelectorAll('.dir-calc-card');
+            sectionCards.forEach(card => {
+              const name = card.getAttribute('data-calc-name').toLowerCase();
+              const cat = card.getAttribute('data-calc-cat');
+              const firstLetter = name.charAt(0).toUpperCase();
+
+              const matchesCat = activeCat === 'all' || cat === activeCat;
+              const matchesLetter = activeLetter === 'all' || firstLetter === activeLetter;
+              const matchesSearch = name.includes(searchQuery);
+
+              if (matchesCat && matchesLetter && matchesSearch) {
+                card.style.display = 'flex';
+                sectionVisible = true;
+                visibleCount++;
+              } else {
+                card.style.display = 'none';
+              }
+            });
+
+            // If sorting or letter filter is active, section grouping is secondary.
+            // Hide section headers if no elements inside match
+            if (sectionVisible && activeLetter === 'all') {
+              section.style.display = 'block';
+            } else {
+              section.style.display = 'none';
+              // If letter filter is active, we might want to flat display cards.
+              // To handle simply: if section is hidden, but cards match, show container without header.
+              if (sectionVisible) {
+                section.style.display = 'block';
+                section.querySelector('h3').style.display = 'none';
+              }
+            }
+
+            if (activeLetter === 'all') {
+              section.querySelector('h3').style.display = 'flex';
+            }
+          });
+
+          countBadge.textContent = visibleCount;
+
+          // Re-sort cards in DOM if required
+          sortCards();
+        }
+
+        function sortCards() {
+          const order = sortSelect.value;
+          sections.forEach(section => {
+            const grid = section.querySelector('.grid-3');
+            const cardArray = Array.from(grid.querySelectorAll('.dir-calc-card'));
+            cardArray.sort((a, b) => {
+              const nameA = a.getAttribute('data-calc-name').toLowerCase();
+              const nameB = b.getAttribute('data-calc-name').toLowerCase();
+              return order === 'asc' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+            });
+            cardArray.forEach(card => grid.appendChild(card));
+          });
+        }
+
+        // Cat binds
+        catButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            catButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeCat = btn.getAttribute('data-cat');
+            filter();
+          });
+        });
+
+        // Letter binds
+        letterButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            letterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeLetter = btn.getAttribute('data-letter');
+            filter();
+          });
+        });
+
+        // Search inputs
+        searchInput.addEventListener('input', () => {
+          searchQuery = searchInput.value.trim().toLowerCase();
+          filter();
+        });
+
+        // Sort selects
+        sortSelect.addEventListener('change', sortCards);
+      </script>
+    
+
+</body>
+</html>

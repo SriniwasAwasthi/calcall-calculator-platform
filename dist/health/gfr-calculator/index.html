@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glomerular Filtration Rate (eGFR) Kidney Calculator</title>
+  <meta name="description" content="Estimate kidney filter performance values using serum creatinine levels.">
+  <meta name="keywords" content="gfr calculator, egfr kidney check, creatinine clearance">
+  <link rel="canonical" href="https://calculist.netlify.app/health/gfr-calculator/">
+  
+  <!-- SEO Open Graph & Twitter Cards -->
+  
+  <meta property="og:title" content="Glomerular Filtration Rate (eGFR) Kidney Calculator">
+  <meta property="og:description" content="Estimate kidney filter performance values using serum creatinine levels.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://calculist.netlify.app/health/gfr-calculator/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Glomerular Filtration Rate (eGFR) Kidney Calculator">
+  <meta name="twitter:description" content="Estimate kidney filter performance values using serum creatinine levels.">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GFR Calculator",
+    "operatingSystem": "All",
+    "applicationCategory": "BusinessApplication",
+    "description": "Estimate kidney filter performance values using serum creatinine levels.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/calculators.css">
+  <link rel="stylesheet" href="/css/animations.css">
+
+  <!-- Immediate Theme & Font Setup to Prevent Flashing -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+      
+      const savedFont = localStorage.getItem('font-family');
+      if (savedFont) {
+        document.documentElement.classList.add('font-' + savedFont);
+      }
+    })();
+  </script>
+
+  <!-- Inlined Theme & Font Setup Script for Toggling -->
+  <script type="module">
+    import { toggleTheme } from '/js/theme.js';
+    window.toggleTheme = toggleTheme;
+
+    window.setFontFamily = function(font) {
+      document.documentElement.classList.remove('font-comic', 'font-century', 'font-bell', 'font-times');
+      if (font && font !== 'default') {
+        document.documentElement.classList.add('font-' + font);
+        localStorage.setItem('font-family', font);
+      } else {
+        localStorage.removeItem('font-family');
+      }
+    };
+  </script>
+</head>
+<body class="fade-in">
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo-link">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="9" x2="15" y2="9"></line>
+          <line x1="9" y1="13" x2="15" y2="13"></line>
+          <line x1="9" y1="17" x2="15" y2="17"></line>
+          <line x1="12" y1="9" x2="12" y2="17"></line>
+        </svg>
+        <span>CalcAll</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/financial/" class="nav-link">Financial</a></li>
+          <li><a href="/health/" class="nav-link">Health</a></li>
+          <li><a href="/math/" class="nav-link">Math</a></li>
+          <li><a href="/other/" class="nav-link">Other</a></li>
+          <li><a href="/all/" class="nav-link">All Tools</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Font Selector -->
+        <select class="font-select-dropdown" onchange="window.setFontFamily(this.value)" aria-label="Select Font" title="Change Font" style="background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 0.85rem; cursor: pointer; font-family: var(--font-sans); outline: none;">
+          <option value="default">Outfit (Default)</option>
+          <option value="comic" style="font-family: 'Comic Sans MS', cursive;">Comic Sans</option>
+          <option value="century" style="font-family: 'Century Gothic', sans-serif;">Century</option>
+          <option value="bell" style="font-family: 'Bell MT', serif;">Bell MT</option>
+          <option value="times" style="font-family: 'Times New Roman', serif;">Times New Roman</option>
+        </select>
+        <script>
+          const savedFont = localStorage.getItem('font-family') || 'default';
+          const fontSel = document.querySelector('.font-select-dropdown');
+          if (fontSel) fontSel.value = savedFont;
+        </script>
+
+        <!-- Search Trigger -->
+        <button class="header-btn trigger-search" aria-label="Search Calculators" title="Search (Press /)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <!-- Theme Toggle -->
+        <button class="header-btn" onclick="window.toggleTheme()" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Access Navigation Chips -->
+  <div class="category-bar">
+    <div class="container category-bar-container">
+      <a href="/math/scientific-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+        Scientific
+      </a>
+      <a href="/financial/mortgage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Mortgage
+      </a>
+      <a href="/health/bmi-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        BMI Check
+      </a>
+      <a href="/financial/loan-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        Loans
+      </a>
+      <a href="/financial/compound-interest-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        Compound Growth
+      </a>
+      <a href="/other/age-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Age Calculator
+      </a>
+      <a href="/other/date-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        Date Math
+      </a>
+      <a href="/math/percentage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle><line x1="17.5" y1="6.5" x2="6.5" y2="17.5"></line></svg>
+        Percentages
+      </a>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs & Content Panel -->
+  <main class="main-content">
+    <div class="container">
+      
+    <nav aria-label="Breadcrumb">
+      <ul class="breadcrumb">
+        
+            <li class="breadcrumb-item">
+              <a href="/" class="breadcrumb-link">Home</a>
+            </li>
+          
+            <li class="breadcrumb-item">
+              <a href="/health/" class="breadcrumb-link">Fitness & Health Calculators</a>
+            </li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">GFR Calculator</li>
+      </ul>
+    </nav>
+  
+      <!-- Calculator Details Page Template -->
+<div class="detail-header-block">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap;">
+    <div>
+      <span class="detail-category-badge">Fitness & Health Calculators</span>
+      <h1 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: var(--space-xs);">GFR Calculator</h1>
+      <p class="detail-description" style="max-width: 720px;">Determine kidney health Glomerular Filtration Rates (eGFR) using creatinine and demographic inputs.</p>
+    </div>
+    
+    <!-- Action Controls: Favorites and Sharing -->
+    <div style="display: flex; gap: var(--space-sm); align-items: center; margin-top: var(--space-xs);">
+      <!-- Share button -->
+      <button id="btn-share" class="btn btn-secondary" title="Share link to these calculations" style="height: 40px; padding: 0 16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+        <span>Share</span>
+      </button>
+      <!-- Copy link button -->
+      <button id="btn-copy-link" class="btn btn-secondary" title="Copy link to clipboard" style="height: 40px; width: 40px; padding: 0; display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      </button>
+      <!-- Favorite heart toggle -->
+      <button id="btn-favorite-toggle" class="btn-favorite" aria-label="Add to Favorites" title="Favorite this calculator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Workspace grid -->
+<div class="workspace-grid">
+  <!-- Left column: inputs form -->
+  <div class="workspace-panel">
+    <h3 class="workspace-panel-title">Inputs</h3>
+    <form id="calculator-inputs-form" onsubmit="return false;" style="display: flex; flex-direction: column; gap: var(--space-md);">
+      
+      <div class="form-group">
+        <label class="form-label" for="input-creatinine">Serum Creatinine (mg/dL)</label>
+        
+        <input type="number" id="input-creatinine" data-key="creatinine" class="form-input" 
+          value="0.9" 
+          step="any" 
+           
+          >
+      
+      </div>
+    
+      <div class="form-group">
+        <label class="form-label" for="input-age">Age (Years)</label>
+        
+        <input type="number" id="input-age" data-key="age" class="form-input" 
+          value="45" 
+          step="any" 
+           
+          >
+      
+      </div>
+    
+      <div class="form-group">
+        <label class="form-label" for="input-gender">Biological Sex</label>
+        
+        <select id="input-gender" data-key="gender" class="form-select">
+          <option value="male" selected>Male</option><option value="female" >Female</option>
+        </select>
+      
+      </div>
+    
+    </form>
+  </div>
+
+  <!-- Right column: outputs results -->
+  <div class="workspace-panel" style="background-color: var(--panel-bg);">
+    <h3 class="workspace-panel-title">Calculations & Results</h3>
+    <div id="calculator-results-wrapper" class="result-block">
+      
+      <div class="result-card" id="card-egfr">
+        <span class="result-lbl">eGFR (mL/min/1.73m²)</span>
+        <div class="result-val" id="result-egfr">-</div>
+      </div>
+    
+      <div class="result-card" id="card-status">
+        <span class="result-lbl">Kidney Function Stage</span>
+        <div class="result-val" id="result-status">-</div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+<!-- Supporting details, equations, formulas, and recommendations -->
+<div class="info-section-grid">
+  <!-- Formula Area -->
+  <div class="card">
+    <h3 style="font-size: 1.15rem; border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; color: var(--primary);"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+      Formula & Mathematical Equations
+    </h3>
+    <div class="formula-block">
+      \text{CKD-EPI Creatinine Equation (2021)}
+    </div>
+  </div>
+
+  <!-- Explanation Area -->
+  <div class="card">
+    <h3 style="font-size: 1.15rem; border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; color: var(--primary);"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      How It Works & Explanation
+    </h3>
+    <div style="font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); display: flex; flex-direction: column; gap: var(--space-md);">
+      <p>eGFR assesses kidney filter function. Values below 60 mL/min/1.73m² suggest potential kidney disease.</p>
+    </div>
+  </div>
+
+  <!-- Related Calculators -->
+  <div>
+    <h3 style="font-size: 1.25rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Related Calculators</h3>
+    <div class="grid-3">
+      
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/bmi-calculator/">BMI Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate your Body Mass Index (BMI) to understand if your weight is in a healthy range relative to your height.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/bmi-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/calorie-calculator/">Calorie Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your daily calorie needs for weight maintenance, weight loss, or weight gain based on activity levels.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/calorie-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/body-fat-calculator/">Body Fat Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate your body fat percentage using the standard US Navy circumference method.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/body-fat-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/bmr-calculator/">BMR Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your Basal Metabolic Rate (BMR), the minimum daily energy expenditure needed at rest.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/bmr-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/ideal-weight-calculator/">Ideal Weight Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate your target healthy body weight based on height and gender using standard formulas.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/ideal-weight-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/pace-calculator/">Pace Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Convert distance and time bounds to determine running paces or speeds.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/pace-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/army-body-fat-calculator/">Army Body Fat Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine compliance with US Army height-weight fat standard tests.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/army-body-fat-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/lean-body-mass-calculator/">Lean Body Mass Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your Lean Body Mass (LBM), excluding body fat weight.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/lean-body-mass-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/healthy-weight-calculator/">Healthy Weight Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your recommended weight range corresponding to standard healthy BMIs.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/healthy-weight-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/calories-burned-calculator/">Calories Burned Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the calories burned during physical exercises using MET standards.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/calories-burned-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/one-rep-max-calculator/">One Rep Max Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your maximum lifting capacity from sub-maximal repetitions.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/one-rep-max-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/target-heart-rate-calculator/">Target Heart Rate Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your aerobic exercise target heart rate zones using age metrics.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/target-heart-rate-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/pregnancy-calculator/">Pregnancy Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate pregnancy progression, current gestational age, and due dates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/pregnancy-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/pregnancy-weight-gain-calculator/">Pregnancy Weight Gain Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Recommends healthy pregnancy weight gain targets based on pre-pregnancy BMI levels.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/pregnancy-weight-gain-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/pregnancy-conception-calculator/">Pregnancy Conception Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate the approximate date range when conception occurred based on due date.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/pregnancy-conception-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/due-date-calculator/">Due Date Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your estimated due date using standard Naegele's rule calculations.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/due-date-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/ovulation-calculator/">Ovulation Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your monthly fertile window and peak ovulation dates based on cycles length.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/ovulation-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/conception-calculator/">Conception Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate conception dates based on Last Menstrual Period (LMP) dates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/conception-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/period-calculator/">Period Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Forecast future menstrual cycle period dates over the next six months.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/period-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/macro-calculator/">Macro Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate daily carbohydrate, protein, and fat intake distribution targets.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/macro-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/carbohydrate-calculator/">Carbohydrate Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Recommends daily carbohydrate gram intake targets based on energy expenditures.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/carbohydrate-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/protein-calculator/">Protein Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine daily protein requirements for muscle maintenance and training goals.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/protein-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/fat-intake-calculator/">Fat Intake Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine healthy daily dietary fat gram limits.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/fat-intake-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/tdee-calculator/">TDEE Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate your Total Daily Energy Expenditure (TDEE) based on metabolic BMR and activity levels.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/tdee-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/body-type-calculator/">Body Type Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your body shape category based on bust, waist, and hip measurements.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/body-type-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/body-surface-area-calculator/">Body Surface Area Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the total surface area of the human body using the standard Mosteller formula.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/body-surface-area-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/bac-calculator/">BAC Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate blood alcohol concentration (BAC) levels over time using the Widmark formula.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/bac-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/health/molarity-calculator/">Molarity Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate chemistry solution molarity, solute mass, or volume concentration.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/health/molarity-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-branding">
+          <a href="/" class="logo-link">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="9" x2="15" y2="9"></line>
+              <line x1="9" y1="13" x2="15" y2="13"></line>
+              <line x1="9" y1="17" x2="15" y2="17"></line>
+              <line x1="12" y1="9" x2="12" y2="17"></line>
+            </svg>
+            <span>CalcAll</span>
+          </a>
+          <p class="footer-desc">A premium next-generation calculations engine for fast, modern, and detailed mathematical analysis.</p>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Calculators: <strong id="footer-total-count">191</strong>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="/financial/" class="footer-link">Financial (71)</a></li>
+            <li><a href="/health/" class="footer-link">Fitness & Health (29)</a></li>
+            <li><a href="/math/" class="footer-link">Math (38)</a></li>
+            <li><a href="/other/" class="footer-link">Other (53)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="/all/" class="footer-link">All Calculators</a></li>
+            <li><a href="/sitemap/" class="footer-link">HTML Sitemap</a></li>
+            <li><a href="/sitemap.xml" class="footer-link">XML Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">Built using native, zero-dependency static page hydration. Fast, accessible, and SEO optimized.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 CalcAll. All rights reserved. Designed for optimal speed and UX.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Autocomplete Search Initialization -->
+  <script type="module">
+    import { calculators } from '/js/calculators.js';
+    import { initSearch } from '/js/search.js';
+    
+    // Initialize Global Search listeners
+    initSearch(calculators);
+  </script>
+
+  <!-- Page-Specific Script Injection -->
+  
+        <script type="module">
+          import { addRecent } from '/js/recent.js';
+          import { isFavorite, toggleFavorite } from '/js/favorites.js';
+          import { calculators } from '/js/calculators.js';
+
+          // Track recently viewed
+          addRecent('gfr-calculator');
+
+          // Setup Favorite Heart button
+          const favBtn = document.getElementById('btn-favorite-toggle');
+          if (favBtn) {
+            if (isFavorite('gfr-calculator')) {
+              favBtn.classList.add('active');
+            }
+            favBtn.addEventListener('click', () => {
+              const active = toggleFavorite('gfr-calculator');
+              favBtn.classList.toggle('active', active);
+            });
+          }
+
+          // Import runtime and scientific engines
+          const currentCalcId = 'gfr-calculator';
+          if ('undefined' === 'scientific') {
+            import('/js/scientific.js').then(module => {
+              module.initScientificCalculator();
+            });
+          } else {
+            import('/js/calculator-runtime.js').then(module => {
+              module.initCalculatorRuntime(currentCalcId, calculators);
+            });
+          }
+        </script>
+      
+
+</body>
+</html>

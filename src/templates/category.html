@@ -1,0 +1,15 @@
+<!-- Category Landing Page Template -->
+<div class="detail-header-block">
+  <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xs);">
+    <h1 style="font-size: 2.5rem; line-height: 1.1;">{{CATEGORY_NAME}}</h1>
+    <span class="detail-category-badge" style="margin-bottom: 0;">{{CATEGORY_COUNT}} Tools</span>
+  </div>
+  <p class="detail-description" style="font-size: 1.2rem; max-width: 680px;">{{CATEGORY_DESCRIPTION}}</p>
+</div>
+
+<!-- List of Calculators in this Category -->
+<section style="margin-top: var(--space-xl);">
+  <div class="grid-3">
+    {{CATEGORY_CALCULATORS_LIST}}
+  </div>
+</section>

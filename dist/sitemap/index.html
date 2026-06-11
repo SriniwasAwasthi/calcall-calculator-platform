@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sitemap - All Online Calculators Link Tree</title>
+  <meta name="description" content="Browse the complete link directory of our operational calculator engines. Fast sitemap access.">
+  <meta name="keywords" content="sitemap, link tree, calculator list">
+  <link rel="canonical" href="https://calculist.netlify.app/sitemap/">
+  
+  <!-- SEO Open Graph & Twitter Cards -->
+  
+  <meta property="og:title" content="Sitemap Directory">
+  <meta property="og:description" content="Complete link index.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://calculist.netlify.app/sitemap/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sitemap Directory">
+  <meta name="twitter:description" content="Complete link index.">
+  
+  
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/calculators.css">
+  <link rel="stylesheet" href="/css/animations.css">
+
+  <!-- Immediate Theme & Font Setup to Prevent Flashing -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+      
+      const savedFont = localStorage.getItem('font-family');
+      if (savedFont) {
+        document.documentElement.classList.add('font-' + savedFont);
+      }
+    })();
+  </script>
+
+  <!-- Inlined Theme & Font Setup Script for Toggling -->
+  <script type="module">
+    import { toggleTheme } from '/js/theme.js';
+    window.toggleTheme = toggleTheme;
+
+    window.setFontFamily = function(font) {
+      document.documentElement.classList.remove('font-comic', 'font-century', 'font-bell', 'font-times');
+      if (font && font !== 'default') {
+        document.documentElement.classList.add('font-' + font);
+        localStorage.setItem('font-family', font);
+      } else {
+        localStorage.removeItem('font-family');
+      }
+    };
+  </script>
+</head>
+<body class="fade-in">
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo-link">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="9" x2="15" y2="9"></line>
+          <line x1="9" y1="13" x2="15" y2="13"></line>
+          <line x1="9" y1="17" x2="15" y2="17"></line>
+          <line x1="12" y1="9" x2="12" y2="17"></line>
+        </svg>
+        <span>CalcAll</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/financial/" class="nav-link">Financial</a></li>
+          <li><a href="/health/" class="nav-link">Health</a></li>
+          <li><a href="/math/" class="nav-link">Math</a></li>
+          <li><a href="/other/" class="nav-link">Other</a></li>
+          <li><a href="/all/" class="nav-link">All Tools</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Font Selector -->
+        <select class="font-select-dropdown" onchange="window.setFontFamily(this.value)" aria-label="Select Font" title="Change Font" style="background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 0.85rem; cursor: pointer; font-family: var(--font-sans); outline: none;">
+          <option value="default">Outfit (Default)</option>
+          <option value="comic" style="font-family: 'Comic Sans MS', cursive;">Comic Sans</option>
+          <option value="century" style="font-family: 'Century Gothic', sans-serif;">Century</option>
+          <option value="bell" style="font-family: 'Bell MT', serif;">Bell MT</option>
+          <option value="times" style="font-family: 'Times New Roman', serif;">Times New Roman</option>
+        </select>
+        <script>
+          const savedFont = localStorage.getItem('font-family') || 'default';
+          const fontSel = document.querySelector('.font-select-dropdown');
+          if (fontSel) fontSel.value = savedFont;
+        </script>
+
+        <!-- Search Trigger -->
+        <button class="header-btn trigger-search" aria-label="Search Calculators" title="Search (Press /)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <!-- Theme Toggle -->
+        <button class="header-btn" onclick="window.toggleTheme()" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Access Navigation Chips -->
+  <div class="category-bar">
+    <div class="container category-bar-container">
+      <a href="/math/scientific-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+        Scientific
+      </a>
+      <a href="/financial/mortgage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Mortgage
+      </a>
+      <a href="/health/bmi-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        BMI Check
+      </a>
+      <a href="/financial/loan-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        Loans
+      </a>
+      <a href="/financial/compound-interest-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        Compound Growth
+      </a>
+      <a href="/other/age-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Age Calculator
+      </a>
+      <a href="/other/date-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        Date Math
+      </a>
+      <a href="/math/percentage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle><line x1="17.5" y1="6.5" x2="6.5" y2="17.5"></line></svg>
+        Percentages
+      </a>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs & Content Panel -->
+  <main class="main-content">
+    <div class="container">
+      
+    <nav aria-label="Breadcrumb">
+      <ul class="breadcrumb">
+        
+            <li class="breadcrumb-item">
+              <a href="/" class="breadcrumb-link">Home</a>
+            </li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Sitemap</li>
+      </ul>
+    </nav>
+  
+      <!-- HTML Sitemap Directory Page -->
+<div class="detail-header-block">
+  <h1 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: var(--space-xs);">Sitemap Directory</h1>
+  <p class="detail-description">Navigate directly to any section or specific tool on the platform.</p>
+</div>
+
+<section class="card" style="margin-top: var(--space-xl); padding: var(--space-xl);">
+  <div class="footer-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-xl);">
+    
+    <div>
+      <h3 style="font-size: 1.15rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">General Pages</h3>
+      <ul class="footer-links">
+        <li><a href="/" class="footer-link">Homepage</a></li>
+        <li><a href="/all/" class="footer-link">All Calculators Directory</a></li>
+        <li><a href="/sitemap/" class="footer-link">HTML Sitemap</a></li>
+        <li><a href="/sitemap.xml" class="footer-link">XML Sitemap</a></li>
+      </ul>
+    </div>
+
+    <!-- The categories will be injected during compilation -->
+    
+      <div>
+        <h3 style="font-size: 1.15rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Financial Calculators</h3>
+        <ul class="footer-links" style="gap: var(--space-md);">
+          <li><a href="/financial/" style="font-weight: 700;">Category Main Page</a></li>
+          
+            <li><a href="/financial/mortgage-calculator/" class="footer-link">Mortgage Calculator</a></li>
+          
+            <li><a href="/financial/amortization-calculator/" class="footer-link">Amortization Calculator</a></li>
+          
+            <li><a href="/financial/mortgage-payoff-calculator/" class="footer-link">Mortgage Payoff Calculator</a></li>
+          
+            <li><a href="/financial/house-affordability-calculator/" class="footer-link">House Affordability Calculator</a></li>
+          
+            <li><a href="/financial/rent-calculator/" class="footer-link">Rent Calculator</a></li>
+          
+            <li><a href="/financial/debt-to-income-ratio-calculator/" class="footer-link">Debt-to-Income Ratio Calculator</a></li>
+          
+            <li><a href="/financial/real-estate-calculator/" class="footer-link">Real Estate Calculator</a></li>
+          
+            <li><a href="/financial/refinance-calculator/" class="footer-link">Refinance Calculator</a></li>
+          
+            <li><a href="/financial/rental-property-calculator/" class="footer-link">Rental Property Calculator</a></li>
+          
+            <li><a href="/financial/apr-calculator/" class="footer-link">APR Calculator</a></li>
+          
+            <li><a href="/financial/fha-loan-calculator/" class="footer-link">FHA Loan Calculator</a></li>
+          
+            <li><a href="/financial/va-mortgage-calculator/" class="footer-link">VA Mortgage Calculator</a></li>
+          
+            <li><a href="/financial/home-equity-loan-calculator/" class="footer-link">Home Equity Loan Calculator</a></li>
+          
+            <li><a href="/financial/heloc-calculator/" class="footer-link">HELOC Calculator</a></li>
+          
+            <li><a href="/financial/down-payment-calculator/" class="footer-link">Down Payment Calculator</a></li>
+          
+            <li><a href="/financial/rent-vs-buy-calculator/" class="footer-link">Rent vs. Buy Calculator</a></li>
+          
+            <li><a href="/financial/auto-loan-calculator/" class="footer-link">Auto Loan Calculator</a></li>
+          
+            <li><a href="/financial/cash-back-or-low-interest-calculator/" class="footer-link">Cash Back or Low Interest Calculator</a></li>
+          
+            <li><a href="/financial/auto-lease-calculator/" class="footer-link">Auto Lease Calculator</a></li>
+          
+            <li><a href="/financial/interest-calculator/" class="footer-link">Interest Calculator</a></li>
+          
+            <li><a href="/financial/investment-calculator/" class="footer-link">Investment Calculator</a></li>
+          
+            <li><a href="/financial/finance-calculator/" class="footer-link">Finance Calculator</a></li>
+          
+            <li><a href="/financial/compound-interest-calculator/" class="footer-link">Compound Interest Calculator</a></li>
+          
+            <li><a href="/financial/interest-rate-calculator/" class="footer-link">Interest Rate Calculator</a></li>
+          
+            <li><a href="/financial/savings-calculator/" class="footer-link">Savings Calculator</a></li>
+          
+            <li><a href="/financial/simple-interest-calculator/" class="footer-link">Simple Interest Calculator</a></li>
+          
+            <li><a href="/financial/cd-calculator/" class="footer-link">CD Calculator</a></li>
+          
+            <li><a href="/financial/bond-calculator/" class="footer-link">Bond Calculator</a></li>
+          
+            <li><a href="/financial/mutual-fund-calculator/" class="footer-link">Mutual Fund Calculator</a></li>
+          
+            <li><a href="/financial/average-return-calculator/" class="footer-link">Average Return Calculator</a></li>
+          
+            <li><a href="/financial/irr-calculator/" class="footer-link">IRR Calculator</a></li>
+          
+            <li><a href="/financial/roi-calculator/" class="footer-link">ROI Calculator</a></li>
+          
+            <li><a href="/financial/payback-period-calculator/" class="footer-link">Payback Period Calculator</a></li>
+          
+            <li><a href="/financial/present-value-calculator/" class="footer-link">Present Value Calculator</a></li>
+          
+            <li><a href="/financial/future-value-calculator/" class="footer-link">Future Value Calculator</a></li>
+          
+            <li><a href="/financial/retirement-calculator/" class="footer-link">Retirement Calculator</a></li>
+          
+            <li><a href="/financial/401k-calculator/" class="footer-link">401K Calculator</a></li>
+          
+            <li><a href="/financial/pension-calculator/" class="footer-link">Pension Calculator</a></li>
+          
+            <li><a href="/financial/social-security-calculator/" class="footer-link">Social Security Calculator</a></li>
+          
+            <li><a href="/financial/annuity-calculator/" class="footer-link">Annuity Calculator</a></li>
+          
+            <li><a href="/financial/annuity-payout-calculator/" class="footer-link">Annuity Payout Calculator</a></li>
+          
+            <li><a href="/financial/roth-ira-calculator/" class="footer-link">Roth IRA Calculator</a></li>
+          
+            <li><a href="/financial/ira-calculator/" class="footer-link">IRA Calculator</a></li>
+          
+            <li><a href="/financial/rmd-calculator/" class="footer-link">RMD Calculator</a></li>
+          
+            <li><a href="/financial/income-tax-calculator/" class="footer-link">Income Tax Calculator</a></li>
+          
+            <li><a href="/financial/salary-calculator/" class="footer-link">Salary Calculator</a></li>
+          
+            <li><a href="/financial/marriage-tax-calculator/" class="footer-link">Marriage Tax Calculator</a></li>
+          
+            <li><a href="/financial/estate-tax-calculator/" class="footer-link">Estate Tax Calculator</a></li>
+          
+            <li><a href="/financial/take-home-paycheck-calculator/" class="footer-link">Take-Home-Paycheck Calculator</a></li>
+          
+            <li><a href="/financial/loan-calculator/" class="footer-link">Loan Calculator</a></li>
+          
+            <li><a href="/financial/payment-calculator/" class="footer-link">Payment Calculator</a></li>
+          
+            <li><a href="/financial/currency-calculator/" class="footer-link">Currency Calculator</a></li>
+          
+            <li><a href="/financial/inflation-calculator/" class="footer-link">Inflation Calculator</a></li>
+          
+            <li><a href="/financial/sales-tax-calculator/" class="footer-link">Sales Tax Calculator</a></li>
+          
+            <li><a href="/financial/credit-card-calculator/" class="footer-link">Credit Card Calculator</a></li>
+          
+            <li><a href="/financial/credit-cards-payoff-calculator/" class="footer-link">Credit Cards Payoff Calculator</a></li>
+          
+            <li><a href="/financial/debt-payoff-calculator/" class="footer-link">Debt Payoff Calculator</a></li>
+          
+            <li><a href="/financial/debt-consolidation-calculator/" class="footer-link">Debt Consolidation Calculator</a></li>
+          
+            <li><a href="/financial/repayment-calculator/" class="footer-link">Repayment Calculator</a></li>
+          
+            <li><a href="/financial/student-loan-calculator/" class="footer-link">Student Loan Calculator</a></li>
+          
+            <li><a href="/financial/college-cost-calculator/" class="footer-link">College Cost Calculator</a></li>
+          
+            <li><a href="/financial/vat-calculator/" class="footer-link">VAT Calculator</a></li>
+          
+            <li><a href="/financial/depreciation-calculator/" class="footer-link">Depreciation Calculator</a></li>
+          
+            <li><a href="/financial/margin-calculator/" class="footer-link">Margin Calculator</a></li>
+          
+            <li><a href="/financial/discount-calculator/" class="footer-link">Discount Calculator</a></li>
+          
+            <li><a href="/financial/business-loan-calculator/" class="footer-link">Business Loan Calculator</a></li>
+          
+            <li><a href="/financial/personal-loan-calculator/" class="footer-link">Personal Loan Calculator</a></li>
+          
+            <li><a href="/financial/boat-loan-calculator/" class="footer-link">Boat Loan Calculator</a></li>
+          
+            <li><a href="/financial/lease-calculator/" class="footer-link">Lease Calculator</a></li>
+          
+            <li><a href="/financial/budget-calculator/" class="footer-link">Budget Calculator</a></li>
+          
+            <li><a href="/financial/commission-calculator/" class="footer-link">Commission Calculator</a></li>
+          
+        </ul>
+      </div>
+    
+      <div>
+        <h3 style="font-size: 1.15rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Fitness & Health Calculators</h3>
+        <ul class="footer-links" style="gap: var(--space-md);">
+          <li><a href="/health/" style="font-weight: 700;">Category Main Page</a></li>
+          
+            <li><a href="/health/bmi-calculator/" class="footer-link">BMI Calculator</a></li>
+          
+            <li><a href="/health/calorie-calculator/" class="footer-link">Calorie Calculator</a></li>
+          
+            <li><a href="/health/body-fat-calculator/" class="footer-link">Body Fat Calculator</a></li>
+          
+            <li><a href="/health/bmr-calculator/" class="footer-link">BMR Calculator</a></li>
+          
+            <li><a href="/health/ideal-weight-calculator/" class="footer-link">Ideal Weight Calculator</a></li>
+          
+            <li><a href="/health/pace-calculator/" class="footer-link">Pace Calculator</a></li>
+          
+            <li><a href="/health/army-body-fat-calculator/" class="footer-link">Army Body Fat Calculator</a></li>
+          
+            <li><a href="/health/lean-body-mass-calculator/" class="footer-link">Lean Body Mass Calculator</a></li>
+          
+            <li><a href="/health/healthy-weight-calculator/" class="footer-link">Healthy Weight Calculator</a></li>
+          
+            <li><a href="/health/calories-burned-calculator/" class="footer-link">Calories Burned Calculator</a></li>
+          
+            <li><a href="/health/one-rep-max-calculator/" class="footer-link">One Rep Max Calculator</a></li>
+          
+            <li><a href="/health/target-heart-rate-calculator/" class="footer-link">Target Heart Rate Calculator</a></li>
+          
+            <li><a href="/health/pregnancy-calculator/" class="footer-link">Pregnancy Calculator</a></li>
+          
+            <li><a href="/health/pregnancy-weight-gain-calculator/" class="footer-link">Pregnancy Weight Gain Calculator</a></li>
+          
+            <li><a href="/health/pregnancy-conception-calculator/" class="footer-link">Pregnancy Conception Calculator</a></li>
+          
+            <li><a href="/health/due-date-calculator/" class="footer-link">Due Date Calculator</a></li>
+          
+            <li><a href="/health/ovulation-calculator/" class="footer-link">Ovulation Calculator</a></li>
+          
+            <li><a href="/health/conception-calculator/" class="footer-link">Conception Calculator</a></li>
+          
+            <li><a href="/health/period-calculator/" class="footer-link">Period Calculator</a></li>
+          
+            <li><a href="/health/macro-calculator/" class="footer-link">Macro Calculator</a></li>
+          
+            <li><a href="/health/carbohydrate-calculator/" class="footer-link">Carbohydrate Calculator</a></li>
+          
+            <li><a href="/health/protein-calculator/" class="footer-link">Protein Calculator</a></li>
+          
+            <li><a href="/health/fat-intake-calculator/" class="footer-link">Fat Intake Calculator</a></li>
+          
+            <li><a href="/health/tdee-calculator/" class="footer-link">TDEE Calculator</a></li>
+          
+            <li><a href="/health/gfr-calculator/" class="footer-link">GFR Calculator</a></li>
+          
+            <li><a href="/health/body-type-calculator/" class="footer-link">Body Type Calculator</a></li>
+          
+            <li><a href="/health/body-surface-area-calculator/" class="footer-link">Body Surface Area Calculator</a></li>
+          
+            <li><a href="/health/bac-calculator/" class="footer-link">BAC Calculator</a></li>
+          
+            <li><a href="/health/molarity-calculator/" class="footer-link">Molarity Calculator</a></li>
+          
+        </ul>
+      </div>
+    
+      <div>
+        <h3 style="font-size: 1.15rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Math Calculators</h3>
+        <ul class="footer-links" style="gap: var(--space-md);">
+          <li><a href="/math/" style="font-weight: 700;">Category Main Page</a></li>
+          
+            <li><a href="/math/scientific-calculator/" class="footer-link">Scientific Calculator</a></li>
+          
+            <li><a href="/math/percentage-calculator/" class="footer-link">Percentage Calculator</a></li>
+          
+            <li><a href="/math/fraction-calculator/" class="footer-link">Fraction Calculator</a></li>
+          
+            <li><a href="/math/random-number-generator/" class="footer-link">Random Number Generator</a></li>
+          
+            <li><a href="/math/percent-error-calculator/" class="footer-link">Percent Error Calculator</a></li>
+          
+            <li><a href="/math/exponent-calculator/" class="footer-link">Exponent Calculator</a></li>
+          
+            <li><a href="/math/binary-calculator/" class="footer-link">Binary Calculator</a></li>
+          
+            <li><a href="/math/hex-calculator/" class="footer-link">Hex Calculator</a></li>
+          
+            <li><a href="/math/half-life-calculator/" class="footer-link">Half-Life Calculator</a></li>
+          
+            <li><a href="/math/quadratic-formula-calculator/" class="footer-link">Quadratic Formula Calculator</a></li>
+          
+            <li><a href="/math/log-calculator/" class="footer-link">Log Calculator</a></li>
+          
+            <li><a href="/math/ratio-calculator/" class="footer-link">Ratio Calculator</a></li>
+          
+            <li><a href="/math/root-calculator/" class="footer-link">Root Calculator</a></li>
+          
+            <li><a href="/math/lcm-calculator/" class="footer-link">Least Common Multiple Calculator</a></li>
+          
+            <li><a href="/math/gcf-calculator/" class="footer-link">Greatest Common Factor Calculator</a></li>
+          
+            <li><a href="/math/factor-calculator/" class="footer-link">Factor Calculator</a></li>
+          
+            <li><a href="/math/rounding-calculator/" class="footer-link">Rounding Calculator</a></li>
+          
+            <li><a href="/math/matrix-calculator/" class="footer-link">Matrix Calculator</a></li>
+          
+            <li><a href="/math/scientific-notation-calculator/" class="footer-link">Scientific Notation Calculator</a></li>
+          
+            <li><a href="/math/big-number-calculator/" class="footer-link">Big Number Calculator</a></li>
+          
+            <li><a href="/math/standard-deviation-calculator/" class="footer-link">Standard Deviation Calculator</a></li>
+          
+            <li><a href="/math/number-sequence-calculator/" class="footer-link">Number Sequence Calculator</a></li>
+          
+            <li><a href="/math/sample-size-calculator/" class="footer-link">Sample Size Calculator</a></li>
+          
+            <li><a href="/math/probability-calculator/" class="footer-link">Probability Calculator</a></li>
+          
+            <li><a href="/math/statistics-calculator/" class="footer-link">Statistics Calculator</a></li>
+          
+            <li><a href="/math/mean-median-mode-range-calculator/" class="footer-link">Mean, Median, Mode, Range Calculator</a></li>
+          
+            <li><a href="/math/permutation-combination-calculator/" class="footer-link">Permutation and Combination Calculator</a></li>
+          
+            <li><a href="/math/z-score-calculator/" class="footer-link">Z-score Calculator</a></li>
+          
+            <li><a href="/math/confidence-interval-calculator/" class="footer-link">Confidence Interval Calculator</a></li>
+          
+            <li><a href="/math/triangle-calculator/" class="footer-link">Triangle Calculator</a></li>
+          
+            <li><a href="/math/volume-calculator/" class="footer-link">Volume Calculator</a></li>
+          
+            <li><a href="/math/slope-calculator/" class="footer-link">Slope Calculator</a></li>
+          
+            <li><a href="/math/area-calculator/" class="footer-link">Area Calculator</a></li>
+          
+            <li><a href="/math/distance-calculator/" class="footer-link">Distance Calculator</a></li>
+          
+            <li><a href="/math/circle-calculator/" class="footer-link">Circle Calculator</a></li>
+          
+            <li><a href="/math/surface-area-calculator/" class="footer-link">Surface Area Calculator</a></li>
+          
+            <li><a href="/math/pythagorean-theorem-calculator/" class="footer-link">Pythagorean Theorem Calculator</a></li>
+          
+            <li><a href="/math/right-triangle-calculator/" class="footer-link">Right Triangle Calculator</a></li>
+          
+        </ul>
+      </div>
+    
+      <div>
+        <h3 style="font-size: 1.15rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Other Calculators</h3>
+        <ul class="footer-links" style="gap: var(--space-md);">
+          <li><a href="/other/" style="font-weight: 700;">Category Main Page</a></li>
+          
+            <li><a href="/other/age-calculator/" class="footer-link">Age Calculator</a></li>
+          
+            <li><a href="/other/date-calculator/" class="footer-link">Date Calculator</a></li>
+          
+            <li><a href="/other/time-calculator/" class="footer-link">Time Calculator</a></li>
+          
+            <li><a href="/other/hours-calculator/" class="footer-link">Hours Calculator</a></li>
+          
+            <li><a href="/other/time-card-calculator/" class="footer-link">Time Card Calculator</a></li>
+          
+            <li><a href="/other/time-zone-calculator/" class="footer-link">Time Zone Calculator</a></li>
+          
+            <li><a href="/other/time-duration-calculator/" class="footer-link">Time Duration Calculator</a></li>
+          
+            <li><a href="/other/day-counter/" class="footer-link">Day Counter</a></li>
+          
+            <li><a href="/other/day-of-the-week-calculator/" class="footer-link">Day of the Week Calculator</a></li>
+          
+            <li><a href="/other/concrete-calculator/" class="footer-link">Concrete Calculator</a></li>
+          
+            <li><a href="/other/btu-calculator/" class="footer-link">BTU Calculator</a></li>
+          
+            <li><a href="/other/square-footage-calculator/" class="footer-link">Square Footage Calculator</a></li>
+          
+            <li><a href="/other/stair-calculator/" class="footer-link">Stair Calculator</a></li>
+          
+            <li><a href="/other/roofing-calculator/" class="footer-link">Roofing Calculator</a></li>
+          
+            <li><a href="/other/tile-calculator/" class="footer-link">Tile Calculator</a></li>
+          
+            <li><a href="/other/mulch-calculator/" class="footer-link">Mulch Calculator</a></li>
+          
+            <li><a href="/other/gravel-calculator/" class="footer-link">Gravel Calculator</a></li>
+          
+            <li><a href="/other/height-calculator/" class="footer-link">Height Calculator</a></li>
+          
+            <li><a href="/other/conversion-calculator/" class="footer-link">Conversion Calculator</a></li>
+          
+            <li><a href="/other/gdp-calculator/" class="footer-link">GDP Calculator</a></li>
+          
+            <li><a href="/other/density-calculator/" class="footer-link">Density Calculator</a></li>
+          
+            <li><a href="/other/mass-calculator/" class="footer-link">Mass Calculator</a></li>
+          
+            <li><a href="/other/weight-calculator/" class="footer-link">Weight Calculator</a></li>
+          
+            <li><a href="/other/speed-calculator/" class="footer-link">Speed Calculator</a></li>
+          
+            <li><a href="/other/molecular-weight-calculator/" class="footer-link">Molecular Weight Calculator</a></li>
+          
+            <li><a href="/other/roman-numeral-converter/" class="footer-link">Roman Numeral Converter</a></li>
+          
+            <li><a href="/other/voltage-drop-calculator/" class="footer-link">Voltage Drop Calculator</a></li>
+          
+            <li><a href="/other/resistor-calculator/" class="footer-link">Resistor Calculator</a></li>
+          
+            <li><a href="/other/ohms-law-calculator/" class="footer-link">Ohms Law Calculator</a></li>
+          
+            <li><a href="/other/electricity-calculator/" class="footer-link">Electricity Calculator</a></li>
+          
+            <li><a href="/other/ip-subnet-calculator/" class="footer-link">IP Subnet Calculator</a></li>
+          
+            <li><a href="/other/password-generator/" class="footer-link">Password Generator</a></li>
+          
+            <li><a href="/other/bandwidth-calculator/" class="footer-link">Bandwidth Calculator</a></li>
+          
+            <li><a href="/other/base64-encode-decode/" class="footer-link">Base64 Encode / Decode</a></li>
+          
+            <li><a href="/other/url-encode-decode/" class="footer-link">URL Encode / Decode</a></li>
+          
+            <li><a href="/other/gpa-calculator/" class="footer-link">GPA Calculator</a></li>
+          
+            <li><a href="/other/grade-calculator/" class="footer-link">Grade Calculator</a></li>
+          
+            <li><a href="/other/bra-size-calculator/" class="footer-link">Bra Size Calculator</a></li>
+          
+            <li><a href="/other/shoe-size-conversion/" class="footer-link">Shoe Size Conversion</a></li>
+          
+            <li><a href="/other/tip-calculator/" class="footer-link">Tip Calculator</a></li>
+          
+            <li><a href="/other/golf-handicap-calculator/" class="footer-link">Golf Handicap Calculator</a></li>
+          
+            <li><a href="/other/sleep-calculator/" class="footer-link">Sleep Calculator</a></li>
+          
+            <li><a href="/other/wind-chill-calculator/" class="footer-link">Wind Chill Calculator</a></li>
+          
+            <li><a href="/other/heat-index-calculator/" class="footer-link">Heat Index Calculator</a></li>
+          
+            <li><a href="/other/dew-point-calculator/" class="footer-link">Dew Point Calculator</a></li>
+          
+            <li><a href="/other/fuel-cost-calculator/" class="footer-link">Fuel Cost Calculator</a></li>
+          
+            <li><a href="/other/gas-mileage-calculator/" class="footer-link">Gas Mileage Calculator</a></li>
+          
+            <li><a href="/other/horsepower-calculator/" class="footer-link">Horsepower Calculator</a></li>
+          
+            <li><a href="/other/engine-horsepower-calculator/" class="footer-link">Engine Horsepower Calculator</a></li>
+          
+            <li><a href="/other/mileage-calculator/" class="footer-link">Mileage Calculator</a></li>
+          
+            <li><a href="/other/tire-size-calculator/" class="footer-link">Tire Size Calculator</a></li>
+          
+            <li><a href="/other/dice-roller/" class="footer-link">Dice Roller</a></li>
+          
+            <li><a href="/other/love-calculator/" class="footer-link">Love Calculator</a></li>
+          
+        </ul>
+      </div>
+    
+
+  </div>
+</section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-branding">
+          <a href="/" class="logo-link">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="9" x2="15" y2="9"></line>
+              <line x1="9" y1="13" x2="15" y2="13"></line>
+              <line x1="9" y1="17" x2="15" y2="17"></line>
+              <line x1="12" y1="9" x2="12" y2="17"></line>
+            </svg>
+            <span>CalcAll</span>
+          </a>
+          <p class="footer-desc">A premium next-generation calculations engine for fast, modern, and detailed mathematical analysis.</p>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Calculators: <strong id="footer-total-count">191</strong>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="/financial/" class="footer-link">Financial (71)</a></li>
+            <li><a href="/health/" class="footer-link">Fitness & Health (29)</a></li>
+            <li><a href="/math/" class="footer-link">Math (38)</a></li>
+            <li><a href="/other/" class="footer-link">Other (53)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="/all/" class="footer-link">All Calculators</a></li>
+            <li><a href="/sitemap/" class="footer-link">HTML Sitemap</a></li>
+            <li><a href="/sitemap.xml" class="footer-link">XML Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">Built using native, zero-dependency static page hydration. Fast, accessible, and SEO optimized.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 CalcAll. All rights reserved. Designed for optimal speed and UX.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Autocomplete Search Initialization -->
+  <script type="module">
+    import { calculators } from '/js/calculators.js';
+    import { initSearch } from '/js/search.js';
+    
+    // Initialize Global Search listeners
+    initSearch(calculators);
+  </script>
+
+  <!-- Page-Specific Script Injection -->
+  
+
+</body>
+</html>
