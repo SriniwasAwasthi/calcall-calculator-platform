@@ -81,7 +81,7 @@ If you have Node.js installed, you can build and run the development server with
     # or
     node dev.js
     ```
-3.  Open [http://localhost:3000](http://localhost:3000) in your browser. Any edits in the `src/` directory will trigger the watcher to auto-rebuild the pages.
+3.  Open the local server URL in your browser. Any edits in the `src/` directory will trigger the watcher to auto-rebuild the pages.
 
 ### Using Python (Fallback Server)
 If Node.js is not installed on your system, you can run the pre-built site using Python's built-in HTTP server:
@@ -89,4 +89,14 @@ If Node.js is not installed on your system, you can run the pre-built site using
     ```bash
     python -m http.server 3000 --directory dist
     ```
-2.  Open [http://localhost:3000](http://localhost:3000) in your web browser.
+2.  Open the local server URL in your web browser.
+
+---
+
+## 💝 Gratitude & Thanks
+
+Thank you so much for visiting this repository and taking the time to explore CalcAll! Your presence and interest in this project are sincerely appreciated. 
+
+Building this ecosystem has been a journey of precision, user-focused design, and performance optimizations. I hope exploring it brings you inspiration or value. If you have any feedback, suggestions, or just want to connect, please feel free to reach out. 
+
+Wishing you the absolute best in all your endeavors, and thank you once again for stopping by! ✨
