@@ -40,7 +40,6 @@ Explore the CalcAll user interface across category hubs and interactive tool pag
 
 ---
 
-
 ## 💡 Why and How This Site is Useful (User Benefits)
 
 CalcAll is designed to be a highly practical assistant for various life scenarios. Since all calculations are done directly on your device with no remote database queries, your data remains completely private. 
