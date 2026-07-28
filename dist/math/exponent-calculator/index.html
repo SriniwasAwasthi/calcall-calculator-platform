@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exponent Calculator - Power of Numbers Solver</title>
+  <meta name="description" content="Solve powers and exponent bases instantly. Compute fractional, negative, or positive powers.">
+  <meta name="keywords" content="exponent calculator, power calculator, square calculator, cube number">
+  <link rel="canonical" href="https://calculist.netlify.app/math/exponent-calculator/">
+  
+  <!-- SEO Open Graph & Twitter Cards -->
+  
+  <meta property="og:title" content="Exponent Calculator - Power of Numbers Solver">
+  <meta property="og:description" content="Solve powers and exponent bases instantly. Compute fractional, negative, or positive powers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://calculist.netlify.app/math/exponent-calculator/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Exponent Calculator - Power of Numbers Solver">
+  <meta name="twitter:description" content="Solve powers and exponent bases instantly. Compute fractional, negative, or positive powers.">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Exponent Calculator",
+    "operatingSystem": "All",
+    "applicationCategory": "BusinessApplication",
+    "description": "Solve powers and exponent bases instantly. Compute fractional, negative, or positive powers.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/calculators.css">
+  <link rel="stylesheet" href="/css/animations.css">
+
+  <!-- Immediate Theme & Font Setup to Prevent Flashing -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+      
+      const savedFont = localStorage.getItem('font-family');
+      if (savedFont) {
+        document.documentElement.classList.add('font-' + savedFont);
+      }
+    })();
+  </script>
+
+  <!-- Inlined Theme & Font Setup Script for Toggling -->
+  <script type="module">
+    import { toggleTheme } from '/js/theme.js';
+    window.toggleTheme = toggleTheme;
+
+    window.setFontFamily = function(font) {
+      document.documentElement.classList.remove('font-comic', 'font-century', 'font-bell', 'font-times');
+      if (font && font !== 'default') {
+        document.documentElement.classList.add('font-' + font);
+        localStorage.setItem('font-family', font);
+      } else {
+        localStorage.removeItem('font-family');
+      }
+    };
+  </script>
+</head>
+<body class="fade-in">
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo-link">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="9" x2="15" y2="9"></line>
+          <line x1="9" y1="13" x2="15" y2="13"></line>
+          <line x1="9" y1="17" x2="15" y2="17"></line>
+          <line x1="12" y1="9" x2="12" y2="17"></line>
+        </svg>
+        <span>CalcAll</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/financial/" class="nav-link">Financial</a></li>
+          <li><a href="/health/" class="nav-link">Health</a></li>
+          <li><a href="/math/" class="nav-link">Math</a></li>
+          <li><a href="/other/" class="nav-link">Other</a></li>
+          <li><a href="/all/" class="nav-link">All Tools</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Font Selector -->
+        <select class="font-select-dropdown" onchange="window.setFontFamily(this.value)" aria-label="Select Font" title="Change Font" style="background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 0.85rem; cursor: pointer; font-family: var(--font-sans); outline: none;">
+          <option value="default">Outfit (Default)</option>
+          <option value="comic" style="font-family: 'Comic Sans MS', cursive;">Comic Sans</option>
+          <option value="century" style="font-family: 'Century Gothic', sans-serif;">Century</option>
+          <option value="bell" style="font-family: 'Bell MT', serif;">Bell MT</option>
+          <option value="times" style="font-family: 'Times New Roman', serif;">Times New Roman</option>
+        </select>
+        <script>
+          const savedFont = localStorage.getItem('font-family') || 'default';
+          const fontSel = document.querySelector('.font-select-dropdown');
+          if (fontSel) fontSel.value = savedFont;
+        </script>
+
+        <!-- Search Trigger -->
+        <button class="header-btn trigger-search" aria-label="Search Calculators" title="Search (Press /)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <!-- Theme Toggle -->
+        <button class="header-btn" onclick="window.toggleTheme()" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Access Navigation Chips -->
+  <div class="category-bar">
+    <div class="container category-bar-container">
+      <a href="/math/scientific-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+        Scientific
+      </a>
+      <a href="/financial/mortgage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Mortgage
+      </a>
+      <a href="/health/bmi-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        BMI Check
+      </a>
+      <a href="/financial/loan-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        Loans
+      </a>
+      <a href="/financial/compound-interest-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        Compound Growth
+      </a>
+      <a href="/other/age-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Age Calculator
+      </a>
+      <a href="/other/date-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        Date Math
+      </a>
+      <a href="/math/percentage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle><line x1="17.5" y1="6.5" x2="6.5" y2="17.5"></line></svg>
+        Percentages
+      </a>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs & Content Panel -->
+  <main class="main-content">
+    <div class="container">
+      
+    <nav aria-label="Breadcrumb">
+      <ul class="breadcrumb">
+        
+            <li class="breadcrumb-item">
+              <a href="/" class="breadcrumb-link">Home</a>
+            </li>
+          
+            <li class="breadcrumb-item">
+              <a href="/math/" class="breadcrumb-link">Math Calculators</a>
+            </li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Exponent Calculator</li>
+      </ul>
+    </nav>
+  
+      <!-- Calculator Details Page Template -->
+<div class="detail-header-block">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap;">
+    <div>
+      <span class="detail-category-badge">Math Calculators</span>
+      <h1 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: var(--space-xs);">Exponent Calculator</h1>
+      <p class="detail-description" style="max-width: 720px;">Evaluate exponents, computes powers of any base number raised to any power.</p>
+    </div>
+    
+    <!-- Action Controls: Favorites and Sharing -->
+    <div style="display: flex; gap: var(--space-sm); align-items: center; margin-top: var(--space-xs);">
+      <!-- Share button -->
+      <button id="btn-share" class="btn btn-secondary" title="Share link to these calculations" style="height: 40px; padding: 0 16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+        <span>Share</span>
+      </button>
+      <!-- Copy link button -->
+      <button id="btn-copy-link" class="btn btn-secondary" title="Copy link to clipboard" style="height: 40px; width: 40px; padding: 0; display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      </button>
+      <!-- Favorite heart toggle -->
+      <button id="btn-favorite-toggle" class="btn-favorite" aria-label="Add to Favorites" title="Favorite this calculator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Workspace grid -->
+<div class="workspace-grid">
+  <!-- Left column: inputs form -->
+  <div class="workspace-panel">
+    <h3 class="workspace-panel-title">Inputs</h3>
+    <form id="calculator-inputs-form" onsubmit="return false;" style="display: flex; flex-direction: column; gap: var(--space-md);">
+      
+      <div class="form-group">
+        <label class="form-label" for="input-base">Base Number (X)</label>
+        
+        <input type="number" id="input-base" data-key="base" class="form-input" 
+          value="2" 
+          step="any" 
+           
+          >
+      
+      </div>
+    
+      <div class="form-group">
+        <label class="form-label" for="input-exponent">Exponent (n)</label>
+        
+        <input type="number" id="input-exponent" data-key="exponent" class="form-input" 
+          value="10" 
+          step="any" 
+           
+          >
+      
+      </div>
+    
+    </form>
+  </div>
+
+  <!-- Right column: outputs results -->
+  <div class="workspace-panel" style="background-color: var(--panel-bg);">
+    <h3 class="workspace-panel-title">Calculations & Results</h3>
+    <div id="calculator-results-wrapper" class="result-block">
+      
+      <div class="result-card" id="card-result">
+        <span class="result-lbl">Result</span>
+        <div class="result-val" id="result-result">-</div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+<!-- Supporting details, equations, formulas, and recommendations -->
+<div class="info-section-grid">
+  <!-- Formula Area -->
+  <div class="card">
+    <h3 style="font-size: 1.15rem; border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; color: var(--primary);"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+      Formula & Mathematical Equations
+    </h3>
+    <div class="formula-block">
+      Y = X^n
+    </div>
+  </div>
+
+  <!-- Explanation Area -->
+  <div class="card">
+    <h3 style="font-size: 1.15rem; border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; color: var(--primary);"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      How It Works & Explanation
+    </h3>
+    <div style="font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); display: flex; flex-direction: column; gap: var(--space-md);">
+      <p>An exponent tells how many times to multiply a base number by itself. Negative exponents evaluate as division (reciprocal), while fractional powers compute roots.</p>
+    </div>
+  </div>
+
+  <!-- Related Calculators -->
+  <div>
+    <h3 style="font-size: 1.25rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Related Calculators</h3>
+    <div class="grid-3">
+      
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/scientific-calculator/">Scientific Calculator</a></h3>
+        <p style="font-size: 0.85rem;">An interactive, fully featured scientific calculator supporting trigonometric functions, logs, exponents, and order of operations.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/scientific-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/percentage-calculator/">Percentage Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Quickly calculate percentages, find percentage difference, calculate increases/decreases, and solve percentage fractions.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/percentage-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/fraction-calculator/">Fraction Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Add, subtract, multiply, and divide fractions. Supports mixed numbers and simplifies fractions to their simplest form.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/fraction-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/random-number-generator/">Random Number Generator</a></h3>
+        <p style="font-size: 0.85rem;">Generate a truly random number or list of random numbers within a specified range.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/random-number-generator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/percent-error-calculator/">Percent Error Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the percentage error between an experimental/observed value and a theoretical/actual value.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/percent-error-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/binary-calculator/">Binary Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Perform arithmetic operations (addition, subtraction, multiplication, and division) on binary numbers.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/binary-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/hex-calculator/">Hex Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Add, subtract, multiply, and divide hexadecimal numbers. Supports conversions to binary and decimal.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/hex-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/half-life-calculator/">Half-Life Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Solve exponential decay math using the half-life equation. Find remaining quantities, initial quantity, or elapsed time.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/half-life-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/quadratic-formula-calculator/">Quadratic Formula Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Find real and complex roots of a quadratic equation using the quadratic formula solver.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/quadratic-formula-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/log-calculator/">Log Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate logarithm values for any positive base including natural log (ln) and common log (log10).</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/log-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/ratio-calculator/">Ratio Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Simplify ratios or solve proportions of equivalent fractions (A : B = C : D).</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/ratio-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/root-calculator/">Root Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Compute square root, cube root, or any n-th root of a positive real number.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/root-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/lcm-calculator/">Least Common Multiple Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Find the Least Common Multiple (LCM) of two or three numbers instantly.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/lcm-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/gcf-calculator/">Greatest Common Factor Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Find the Greatest Common Factor (GCF/GCD) of two or three numbers.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/gcf-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/factor-calculator/">Factor Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Find all factor divisors of an integer, checks if it is prime, and lists prime factorizations.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/factor-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/rounding-calculator/">Rounding Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Round numbers to decimal places, significant figures, or nearest integer bounds.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/rounding-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/matrix-calculator/">Matrix Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Perform addition, subtraction, multiplication, and determinant equations on 2x2 matrices.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/matrix-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/scientific-notation-calculator/">Scientific Notation Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Add, subtract, multiply, and divide numbers expressed in scientific notation.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/scientific-notation-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/big-number-calculator/">Big Number Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Multiply, divide, add, and subtract extremely large integers without truncation.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/big-number-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/standard-deviation-calculator/">Standard Deviation Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Compute the standard deviation, variance, mean, and count of a dataset.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/standard-deviation-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/number-sequence-calculator/">Number Sequence Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Generate terms and find sums of arithmetic and geometric sequences.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/number-sequence-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/sample-size-calculator/">Sample Size Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the required sample size for a survey based on population size, confidence, and error limits.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/sample-size-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/probability-calculator/">Probability Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate standard probability distributions, single event outcomes, or unions/intersections.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/probability-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/statistics-calculator/">Statistics Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Descriptive statistics solver: Mean, Median, Range, Outliers, Variance, and standard graphs.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/statistics-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/mean-median-mode-range-calculator/">Mean, Median, Mode, Range Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Dedicated calculator to compute mean, median, mode, and range values of datasets.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/mean-median-mode-range-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/permutation-combination-calculator/">Permutation and Combination Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the number of permutations (ordered lists) and combinations (unordered subsets) of size r from a set of size n.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/permutation-combination-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/z-score-calculator/">Z-score Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate Z-scores from raw scores, population means, and standard deviations.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/z-score-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/confidence-interval-calculator/">Confidence Interval Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine confidence intervals of population means given sample variables.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/confidence-interval-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/triangle-calculator/">Triangle Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Solve all sides and angles of a triangle based on partially entered measurements.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/triangle-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/volume-calculator/">Volume Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the volumes of common solid shapes including sphere, cylinder, cone, and rectangular prism.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/volume-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/slope-calculator/">Slope Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate slopes, linear distances, and line angles between two coordinates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/slope-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/area-calculator/">Area Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Solve the surface area size of 2D shapes including circles, rectangles, triangles, and ellipses.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/area-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/distance-calculator/">Distance Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Find the straight-line Cartesian distance between two coordinates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/distance-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/circle-calculator/">Circle Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate radius, diameter, circumference, and area of a circle from any single known dimension.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/circle-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/surface-area-calculator/">Surface Area Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the surface areas of spheres, cylinders, cones, and boxes.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/surface-area-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/pythagorean-theorem-calculator/">Pythagorean Theorem Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate hypotenuse or side lengths of a right triangle using the Pythagorean theorem solver.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/pythagorean-theorem-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/math/right-triangle-calculator/">Right Triangle Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Dedicated right triangle solver using trigonometry relationships (SOH CAH TOA).</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/math/right-triangle-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-branding">
+          <a href="/" class="logo-link">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="9" x2="15" y2="9"></line>
+              <line x1="9" y1="13" x2="15" y2="13"></line>
+              <line x1="9" y1="17" x2="15" y2="17"></line>
+              <line x1="12" y1="9" x2="12" y2="17"></line>
+            </svg>
+            <span>CalcAll</span>
+          </a>
+          <p class="footer-desc">A premium next-generation calculations engine for fast, modern, and detailed mathematical analysis.</p>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Calculators: <strong id="footer-total-count">191</strong>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="/financial/" class="footer-link">Financial (71)</a></li>
+            <li><a href="/health/" class="footer-link">Fitness & Health (29)</a></li>
+            <li><a href="/math/" class="footer-link">Math (38)</a></li>
+            <li><a href="/other/" class="footer-link">Other (53)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="/all/" class="footer-link">All Calculators</a></li>
+            <li><a href="/sitemap/" class="footer-link">HTML Sitemap</a></li>
+            <li><a href="/sitemap.xml" class="footer-link">XML Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">Built using native, zero-dependency static page hydration. Fast, accessible, and SEO optimized.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 CalcAll. All rights reserved. Designed for optimal speed and UX.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Autocomplete Search Initialization -->
+  <script type="module">
+    import { calculators } from '/js/calculators.js';
+    import { initSearch } from '/js/search.js';
+    
+    // Initialize Global Search listeners
+    initSearch(calculators);
+  </script>
+
+  <!-- Page-Specific Script Injection -->
+  
+        <script type="module">
+          import { addRecent } from '/js/recent.js';
+          import { isFavorite, toggleFavorite } from '/js/favorites.js';
+          import { calculators } from '/js/calculators.js';
+
+          // Track recently viewed
+          addRecent('exponent-calculator');
+
+          // Setup Favorite Heart button
+          const favBtn = document.getElementById('btn-favorite-toggle');
+          if (favBtn) {
+            if (isFavorite('exponent-calculator')) {
+              favBtn.classList.add('active');
+            }
+            favBtn.addEventListener('click', () => {
+              const active = toggleFavorite('exponent-calculator');
+              favBtn.classList.toggle('active', active);
+            });
+          }
+
+          // Import runtime and scientific engines
+          const currentCalcId = 'exponent-calculator';
+          if ('undefined' === 'scientific') {
+            import('/js/scientific.js').then(module => {
+              module.initScientificCalculator();
+            });
+          } else {
+            import('/js/calculator-runtime.js').then(module => {
+              module.initCalculatorRuntime(currentCalcId, calculators);
+            });
+          }
+        </script>
+      
+
+</body>
+</html>

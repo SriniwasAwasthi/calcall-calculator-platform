@@ -1,0 +1,72 @@
+<!-- All Calculators Page Template -->
+<div class="detail-header-block">
+  <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-xs);">
+    <h1 style="font-size: 2.5rem; line-height: 1.1;">All Calculators Directory</h1>
+    <span class="detail-category-badge" style="margin-bottom: 0;"><span id="total-count-badge">{{STATS_TOTAL_COUNT}}</span> Tools</span>
+  </div>
+  <p class="detail-description" style="font-size: 1.2rem; max-width: 680px;">Browse our complete collection of fitness, mathematical, daily, and financial calculators.</p>
+</div>
+
+<!-- Inline Filtering Controls -->
+<section style="margin-top: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-md);">
+  
+  <!-- Category Selector Tabs -->
+  <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+    <button class="btn btn-secondary filter-cat-btn active" data-cat="all">All Categories</button>
+    <button class="btn btn-secondary filter-cat-btn" data-cat="financial">Financial</button>
+    <button class="btn btn-secondary filter-cat-btn" data-cat="health">Health & Fitness</button>
+    <button class="btn btn-secondary filter-cat-btn" data-cat="math">Math</button>
+    <button class="btn btn-secondary filter-cat-btn" data-cat="other">Other</button>
+  </div>
+
+  <!-- A-Z Alphabetical Nav Bar -->
+  <div style="display: flex; align-items: center; gap: var(--space-sm); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: var(--space-sm) 0; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;">
+    <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-right: var(--space-sm);">Browse A-Z:</span>
+    <button class="btn btn-secondary filter-letter-btn active" data-letter="all" style="padding: 4px 10px; font-size: 0.85rem;">All</button>
+    <!-- Dynamic buttons from A to Z will be hardcoded below for speed & zero-dependency robustness -->
+    <button class="btn btn-secondary filter-letter-btn" data-letter="A" style="padding: 4px 10px; font-size: 0.85rem;">A</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="B" style="padding: 4px 10px; font-size: 0.85rem;">B</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="C" style="padding: 4px 10px; font-size: 0.85rem;">C</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="D" style="padding: 4px 10px; font-size: 0.85rem;">D</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="E" style="padding: 4px 10px; font-size: 0.85rem;">E</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="F" style="padding: 4px 10px; font-size: 0.85rem;">F</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="G" style="padding: 4px 10px; font-size: 0.85rem;">G</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="H" style="padding: 4px 10px; font-size: 0.85rem;">H</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="I" style="padding: 4px 10px; font-size: 0.85rem;">I</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="J" style="padding: 4px 10px; font-size: 0.85rem;">J</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="K" style="padding: 4px 10px; font-size: 0.85rem;">K</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="L" style="padding: 4px 10px; font-size: 0.85rem;">L</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="M" style="padding: 4px 10px; font-size: 0.85rem;">M</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="N" style="padding: 4px 10px; font-size: 0.85rem;">N</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="O" style="padding: 4px 10px; font-size: 0.85rem;">O</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="P" style="padding: 4px 10px; font-size: 0.85rem;">P</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="Q" style="padding: 4px 10px; font-size: 0.85rem;">Q</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="R" style="padding: 4px 10px; font-size: 0.85rem;">R</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="S" style="padding: 4px 10px; font-size: 0.85rem;">S</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="T" style="padding: 4px 10px; font-size: 0.85rem;">T</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="U" style="padding: 4px 10px; font-size: 0.85rem;">U</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="V" style="padding: 4px 10px; font-size: 0.85rem;">V</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="W" style="padding: 4px 10px; font-size: 0.85rem;">W</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="X" style="padding: 4px 10px; font-size: 0.85rem;">X</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="Y" style="padding: 4px 10px; font-size: 0.85rem;">Y</button>
+    <button class="btn btn-secondary filter-letter-btn" data-letter="Z" style="padding: 4px 10px; font-size: 0.85rem;">Z</button>
+  </div>
+
+  <!-- Search Within Directory Bar -->
+  <div style="display: flex; gap: var(--space-md);">
+    <input type="text" id="dir-search-input" class="form-input" placeholder="Search within directory..." style="max-width: 480px;">
+    <!-- Alphabetical Sorting Toggle -->
+    <select id="dir-sort-select" class="form-select" style="max-width: 200px;">
+      <option value="asc">Sort A to Z</option>
+      <option value="desc">Sort Z to A</option>
+    </select>
+  </div>
+</section>
+
+<!-- Output Directory list -->
+<section style="margin-top: var(--space-xl);">
+  <!-- Visual lists grouped by category initially, but dynamic under search/sort -->
+  <div id="directory-content-wrapper">
+    {{DIRECTORY_INITIAL_CONTENT}}
+  </div>
+</section>

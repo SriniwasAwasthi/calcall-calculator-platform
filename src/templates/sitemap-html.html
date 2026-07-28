@@ -1,0 +1,24 @@
+<!-- HTML Sitemap Directory Page -->
+<div class="detail-header-block">
+  <h1 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: var(--space-xs);">Sitemap Directory</h1>
+  <p class="detail-description">Navigate directly to any section or specific tool on the platform.</p>
+</div>
+
+<section class="card" style="margin-top: var(--space-xl); padding: var(--space-xl);">
+  <div class="footer-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-xl);">
+    
+    <div>
+      <h3 style="font-size: 1.15rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">General Pages</h3>
+      <ul class="footer-links">
+        <li><a href="/" class="footer-link">Homepage</a></li>
+        <li><a href="/all/" class="footer-link">All Calculators Directory</a></li>
+        <li><a href="/sitemap/" class="footer-link">HTML Sitemap</a></li>
+        <li><a href="/sitemap.xml" class="footer-link">XML Sitemap</a></li>
+      </ul>
+    </div>
+
+    <!-- The categories will be injected during compilation -->
+    {{SITEMAP_CATEGORIES_BLOCK}}
+
+  </div>
+</section>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter - Basic Exchange Ratios</title>
+  <meta name="description" content="Convert currencies with custom rate ratios.">
+  <meta name="keywords" content="currency calculator, exchange rate, forex converter">
+  <link rel="canonical" href="https://calculist.netlify.app/financial/currency-calculator/">
+  
+  <!-- SEO Open Graph & Twitter Cards -->
+  
+  <meta property="og:title" content="Currency Converter - Basic Exchange Ratios">
+  <meta property="og:description" content="Convert currencies with custom rate ratios.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://calculist.netlify.app/financial/currency-calculator/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Currency Converter - Basic Exchange Ratios">
+  <meta name="twitter:description" content="Convert currencies with custom rate ratios.">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Currency Calculator",
+    "operatingSystem": "All",
+    "applicationCategory": "BusinessApplication",
+    "description": "Convert currencies with custom rate ratios.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/calculators.css">
+  <link rel="stylesheet" href="/css/animations.css">
+
+  <!-- Immediate Theme & Font Setup to Prevent Flashing -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+      
+      const savedFont = localStorage.getItem('font-family');
+      if (savedFont) {
+        document.documentElement.classList.add('font-' + savedFont);
+      }
+    })();
+  </script>
+
+  <!-- Inlined Theme & Font Setup Script for Toggling -->
+  <script type="module">
+    import { toggleTheme } from '/js/theme.js';
+    window.toggleTheme = toggleTheme;
+
+    window.setFontFamily = function(font) {
+      document.documentElement.classList.remove('font-comic', 'font-century', 'font-bell', 'font-times');
+      if (font && font !== 'default') {
+        document.documentElement.classList.add('font-' + font);
+        localStorage.setItem('font-family', font);
+      } else {
+        localStorage.removeItem('font-family');
+      }
+    };
+  </script>
+</head>
+<body class="fade-in">
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="/" class="logo-link">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="9" x2="15" y2="9"></line>
+          <line x1="9" y1="13" x2="15" y2="13"></line>
+          <line x1="9" y1="17" x2="15" y2="17"></line>
+          <line x1="12" y1="9" x2="12" y2="17"></line>
+        </svg>
+        <span>CalcAll</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/financial/" class="nav-link">Financial</a></li>
+          <li><a href="/health/" class="nav-link">Health</a></li>
+          <li><a href="/math/" class="nav-link">Math</a></li>
+          <li><a href="/other/" class="nav-link">Other</a></li>
+          <li><a href="/all/" class="nav-link">All Tools</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Font Selector -->
+        <select class="font-select-dropdown" onchange="window.setFontFamily(this.value)" aria-label="Select Font" title="Change Font" style="background: var(--input-bg); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 4px 8px; font-size: 0.85rem; cursor: pointer; font-family: var(--font-sans); outline: none;">
+          <option value="default">Outfit (Default)</option>
+          <option value="comic" style="font-family: 'Comic Sans MS', cursive;">Comic Sans</option>
+          <option value="century" style="font-family: 'Century Gothic', sans-serif;">Century</option>
+          <option value="bell" style="font-family: 'Bell MT', serif;">Bell MT</option>
+          <option value="times" style="font-family: 'Times New Roman', serif;">Times New Roman</option>
+        </select>
+        <script>
+          const savedFont = localStorage.getItem('font-family') || 'default';
+          const fontSel = document.querySelector('.font-select-dropdown');
+          if (fontSel) fontSel.value = savedFont;
+        </script>
+
+        <!-- Search Trigger -->
+        <button class="header-btn trigger-search" aria-label="Search Calculators" title="Search (Press /)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <!-- Theme Toggle -->
+        <button class="header-btn" onclick="window.toggleTheme()" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Access Navigation Chips -->
+  <div class="category-bar">
+    <div class="container category-bar-container">
+      <a href="/math/scientific-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+        Scientific
+      </a>
+      <a href="/financial/mortgage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Mortgage
+      </a>
+      <a href="/health/bmi-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        BMI Check
+      </a>
+      <a href="/financial/loan-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        Loans
+      </a>
+      <a href="/financial/compound-interest-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        Compound Growth
+      </a>
+      <a href="/other/age-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Age Calculator
+      </a>
+      <a href="/other/date-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        Date Math
+      </a>
+      <a href="/math/percentage-calculator/" class="chip-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle><line x1="17.5" y1="6.5" x2="6.5" y2="17.5"></line></svg>
+        Percentages
+      </a>
+    </div>
+  </div>
+
+  <!-- Breadcrumbs & Content Panel -->
+  <main class="main-content">
+    <div class="container">
+      
+    <nav aria-label="Breadcrumb">
+      <ul class="breadcrumb">
+        
+            <li class="breadcrumb-item">
+              <a href="/" class="breadcrumb-link">Home</a>
+            </li>
+          
+            <li class="breadcrumb-item">
+              <a href="/financial/" class="breadcrumb-link">Financial Calculators</a>
+            </li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Currency Calculator</li>
+      </ul>
+    </nav>
+  
+      <!-- Calculator Details Page Template -->
+<div class="detail-header-block">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap;">
+    <div>
+      <span class="detail-category-badge">Financial Calculators</span>
+      <h1 style="font-size: 2.5rem; line-height: 1.1; margin-bottom: var(--space-xs);">Currency Calculator</h1>
+      <p class="detail-description" style="max-width: 720px;">Convert currency amounts using standard exchange ratios.</p>
+    </div>
+    
+    <!-- Action Controls: Favorites and Sharing -->
+    <div style="display: flex; gap: var(--space-sm); align-items: center; margin-top: var(--space-xs);">
+      <!-- Share button -->
+      <button id="btn-share" class="btn btn-secondary" title="Share link to these calculations" style="height: 40px; padding: 0 16px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+        <span>Share</span>
+      </button>
+      <!-- Copy link button -->
+      <button id="btn-copy-link" class="btn btn-secondary" title="Copy link to clipboard" style="height: 40px; width: 40px; padding: 0; display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      </button>
+      <!-- Favorite heart toggle -->
+      <button id="btn-favorite-toggle" class="btn-favorite" aria-label="Add to Favorites" title="Favorite this calculator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Main Workspace grid -->
+<div class="workspace-grid">
+  <!-- Left column: inputs form -->
+  <div class="workspace-panel">
+    <h3 class="workspace-panel-title">Inputs</h3>
+    <form id="calculator-inputs-form" onsubmit="return false;" style="display: flex; flex-direction: column; gap: var(--space-md);">
+      
+      <div class="form-group">
+        <label class="form-label" for="input-amount">Amount to Convert</label>
+        
+        <input type="number" id="input-amount" data-key="amount" class="form-input" 
+          value="100" 
+          step="any" 
+           
+          >
+      
+      </div>
+    
+      <div class="form-group">
+        <label class="form-label" for="input-rate">Exchange Rate (Multiplier)</label>
+        
+        <input type="number" id="input-rate" data-key="rate" class="form-input" 
+          value="0.92" 
+          step="any" 
+           
+          >
+      
+      </div>
+    
+    </form>
+  </div>
+
+  <!-- Right column: outputs results -->
+  <div class="workspace-panel" style="background-color: var(--panel-bg);">
+    <h3 class="workspace-panel-title">Calculations & Results</h3>
+    <div id="calculator-results-wrapper" class="result-block">
+      
+      <div class="result-card" id="card-result">
+        <span class="result-lbl">Converted Value</span>
+        <div class="result-val" id="result-result">-</div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+<!-- Supporting details, equations, formulas, and recommendations -->
+<div class="info-section-grid">
+  <!-- Formula Area -->
+  <div class="card">
+    <h3 style="font-size: 1.15rem; border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; color: var(--primary);"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+      Formula & Mathematical Equations
+    </h3>
+    <div class="formula-block">
+      \text{Converted} = \text{Amount} \times \text{Rate}
+    </div>
+  </div>
+
+  <!-- Explanation Area -->
+  <div class="card">
+    <h3 style="font-size: 1.15rem; border-bottom: 1px solid var(--border-color); padding-bottom: var(--space-xs); display: flex; align-items: center; gap: var(--space-sm);">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; color: var(--primary);"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      How It Works & Explanation
+    </h3>
+    <div style="font-size: 1.05rem; line-height: 1.65; color: var(--text-secondary); display: flex; flex-direction: column; gap: var(--space-md);">
+      <p>Currencies exchange values based on global macroeconomic trading supply and demand.</p>
+    </div>
+  </div>
+
+  <!-- Related Calculators -->
+  <div>
+    <h3 style="font-size: 1.25rem; margin-bottom: var(--space-md); border-bottom: 2px solid var(--border-color); padding-bottom: var(--space-xs);">Related Calculators</h3>
+    <div class="grid-3">
+      
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/mortgage-calculator/">Mortgage Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate your monthly mortgage payments including principal, interest, taxes, insurance, and HOA fees.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/mortgage-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/amortization-calculator/">Amortization Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Generate a complete monthly or yearly schedule for paying off mortgages and standard term loans.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/amortization-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/mortgage-payoff-calculator/">Mortgage Payoff Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine how much time and interest expense you save by adding extra payments to your mortgage.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/mortgage-payoff-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/house-affordability-calculator/">House Affordability Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate an affordable home purchase budget based on income, debt, and down payments.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/house-affordability-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/rent-calculator/">Rent Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your target rent budget using the standard 30% household gross income rule.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/rent-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/debt-to-income-ratio-calculator/">Debt-to-Income Ratio Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your Debt-to-Income (DTI) ratio, a crucial metric evaluated during loan application approvals.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/debt-to-income-ratio-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/real-estate-calculator/">Real Estate Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Evaluate property investment deals including capitalization rates, cash flow projections, and ROI metrics.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/real-estate-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/refinance-calculator/">Refinance Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the financial benefits and break-even timeline of refinancing an existing mortgage.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/refinance-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/rental-property-calculator/">Rental Property Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Detailed analysis of rental property investments, including financing, income, expenses, and returns.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/rental-property-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/apr-calculator/">APR Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the Annual Percentage Rate (APR) of a loan including fees and closing costs.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/apr-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/fha-loan-calculator/">FHA Loan Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate payments for FHA government home loans including upfront and annual MIP charges.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/fha-loan-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/va-mortgage-calculator/">VA Mortgage Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate military VA home loan payments including VA funding fees.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/va-mortgage-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/home-equity-loan-calculator/">Home Equity Loan Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your maximum available home equity borrowing limit based on LTV bounds.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/home-equity-loan-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/heloc-calculator/">HELOC Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate monthly interest-only payments during the draw period of a HELOC line of credit.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/heloc-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/down-payment-calculator/">Down Payment Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate how much down payment you need based on target percentages, and how long to save for it.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/down-payment-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/rent-vs-buy-calculator/">Rent vs. Buy Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Compare the total financial cost of renting vs buying a home over a specified time horizon.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/rent-vs-buy-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/auto-loan-calculator/">Auto Loan Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate monthly payments and total interest for a car loan, including taxes and trade-ins.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/auto-loan-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/cash-back-or-low-interest-calculator/">Cash Back or Low Interest Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Compare taking auto manufacturer cash rebates vs low interest financing promotions.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/cash-back-or-low-interest-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/auto-lease-calculator/">Auto Lease Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine monthly payments for auto leases including depreciation and finance money factors.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/auto-lease-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/interest-calculator/">Interest Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate simple or compound interest returns over time on basic principal deposits.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/interest-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/investment-calculator/">Investment Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Model the future value of investments incorporating recurring contributions and interest rates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/investment-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/finance-calculator/">Finance Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Solve Time Value of Money (TVM) formulas, calculating present values or investment payments.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/finance-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/compound-interest-calculator/">Compound Interest Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the future value of your investments using starting capital, interest compounding, and periodic contributions.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/compound-interest-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/interest-rate-calculator/">Interest Rate Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the exact annual rate required to grow capital to a target amount over time.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/interest-rate-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/savings-calculator/">Savings Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the monthly savings required to accumulate a specific future target.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/savings-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/simple-interest-calculator/">Simple Interest Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate basic linear simple interest earnings using standard P-R-T equations.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/simple-interest-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/cd-calculator/">CD Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate Certificates of Deposit (CD) future values and APY earnings.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/cd-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/bond-calculator/">Bond Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate bond values, coupon payments, and yield to maturity (YTM) rates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/bond-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/mutual-fund-calculator/">Mutual Fund Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Project future mutual fund investment values while subtracting expense ratios and fees.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/mutual-fund-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/average-return-calculator/">Average Return Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the arithmetic and geometric average returns of a series of annual returns.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/average-return-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/irr-calculator/">IRR Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the Internal Rate of Return (IRR) for cash flows over time.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/irr-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/roi-calculator/">ROI Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the Return on Investment (ROI) and annualized ROI for arbitrary assets.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/roi-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/payback-period-calculator/">Payback Period Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine how long it takes for an investment to recover its initial cost.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/payback-period-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/present-value-calculator/">Present Value Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the present value (PV) of a future cash amount based on discount rates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/present-value-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/future-value-calculator/">Future Value Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the future value (FV) of a present investment growing at a constant interest rate.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/future-value-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/retirement-calculator/">Retirement Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Project your retirement nest egg and determine if your current savings rate will meet your target expenses.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/retirement-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/401k-calculator/">401K Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate the growth of your 401(k) retirement account, incorporating employer match contributions.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/401k-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/pension-calculator/">Pension Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate defined pension benefits based on service tenure and salary metrics.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/pension-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/social-security-calculator/">Social Security Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate Social Security retirement benefits based on birth year and historical average earnings.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/social-security-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/annuity-calculator/">Annuity Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the future value of an annuity with regular premium deposits.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/annuity-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/annuity-payout-calculator/">Annuity Payout Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine how long your retirement savings will last under regular withdrawal schedules.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/annuity-payout-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/roth-ira-calculator/">Roth IRA Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Project your Roth IRA growth, showing tax-free retirement withdrawal benefits.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/roth-ira-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/ira-calculator/">IRA Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Project traditional pre-tax IRA retirement growth and estimate upfront tax deduction savings.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/ira-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/rmd-calculator/">RMD Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your IRS Required Minimum Distribution (RMD) based on account balances and age thresholds.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/rmd-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/income-tax-calculator/">Income Tax Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate your federal progressive income tax liabilities and net take-home earnings.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/income-tax-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/salary-calculator/">Salary Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Convert hourly pay wages to weekly, bi-weekly, monthly, and annual salaries.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/salary-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/marriage-tax-calculator/">Marriage Tax Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine if filing jointly with a spouse results in a marriage tax penalty or bonus.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/marriage-tax-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/estate-tax-calculator/">Estate Tax Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Estimate estate tax obligations on asset transfers exceeding threshold exclusions.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/estate-tax-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/take-home-paycheck-calculator/">Take-Home-Paycheck Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your net take-home salary paycheck after FICA and tax withholdings.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/take-home-paycheck-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/loan-calculator/">Loan Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine your monthly payment, interest expense, and view a complete amortization schedule for standard loans.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/loan-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/payment-calculator/">Payment Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine standard recurring payments for mortgages or loans.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/payment-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/inflation-calculator/">Inflation Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate historical purchasing power changes based on average inflation rates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/inflation-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/sales-tax-calculator/">Sales Tax Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate the total retail cost of items including local sales tax rates.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/sales-tax-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/credit-card-calculator/">Credit Card Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the monthly payment and time required to clear credit card debt balances.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/credit-card-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/credit-cards-payoff-calculator/">Credit Cards Payoff Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate optimal repayment strategies for multiple credit card accounts.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/credit-cards-payoff-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/debt-payoff-calculator/">Debt Payoff Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine repayment timelines under standard debt snowball or avalanche methods.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/debt-payoff-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/debt-consolidation-calculator/">Debt Consolidation Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Compare consolidating multiple high interest debts into a single lower interest loan.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/debt-consolidation-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/repayment-calculator/">Repayment Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the monthly repayment amounts and interest costs of a basic term loan.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/repayment-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/student-loan-calculator/">Student Loan Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate student loan payments and estimate savings from accelerated repayments.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/student-loan-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/college-cost-calculator/">College Cost Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Plan savings goals for future university tuition and boarding costs.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/college-cost-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/vat-calculator/">VAT Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Add or remove Value Added Tax (VAT) from purchase retail listings.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/vat-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/depreciation-calculator/">Depreciation Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate assets write-downs using straight-line or declining balance rules.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/depreciation-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/margin-calculator/">Margin Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine markup, cost, revenue, and gross profit margin percentages for business pricing.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/margin-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/discount-calculator/">Discount Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine the final price and net savings of items marked with discount percentages.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/discount-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/business-loan-calculator/">Business Loan Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Calculate monthly payments and amortization terms for commercial enterprise financing.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/business-loan-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/personal-loan-calculator/">Personal Loan Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine installment payments for unsecured personal loans.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/personal-loan-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/boat-loan-calculator/">Boat Loan Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine payment amortizations for leisure boats and yachts.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/boat-loan-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/lease-calculator/">Lease Calculator</a></h3>
+        <p style="font-size: 0.85rem;">General equipment or vehicle lease payment estimator.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/lease-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/budget-calculator/">Budget Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Allocate income based on the 50/30/20 budget framework (Needs, Wants, Savings).</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/budget-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+      <div class="card hover-lift">
+        <h3 style="font-size: 1rem;"><a href="/financial/commission-calculator/">Commission Calculator</a></h3>
+        <p style="font-size: 0.85rem;">Determine total earnings from base salary plus sales commission structures.</p>
+        <div style="margin-top: auto; text-align: right;">
+          <a href="/financial/commission-calculator/" class="btn btn-secondary" style="padding: 4px 10px; font-size: 0.8rem;">Open</a>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-branding">
+          <a href="/" class="logo-link">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="9" x2="15" y2="9"></line>
+              <line x1="9" y1="13" x2="15" y2="13"></line>
+              <line x1="9" y1="17" x2="15" y2="17"></line>
+              <line x1="12" y1="9" x2="12" y2="17"></line>
+            </svg>
+            <span>CalcAll</span>
+          </a>
+          <p class="footer-desc">A premium next-generation calculations engine for fast, modern, and detailed mathematical analysis.</p>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Calculators: <strong id="footer-total-count">191</strong>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="/financial/" class="footer-link">Financial (71)</a></li>
+            <li><a href="/health/" class="footer-link">Fitness & Health (29)</a></li>
+            <li><a href="/math/" class="footer-link">Math (38)</a></li>
+            <li><a href="/other/" class="footer-link">Other (53)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="/all/" class="footer-link">All Calculators</a></li>
+            <li><a href="/sitemap/" class="footer-link">HTML Sitemap</a></li>
+            <li><a href="/sitemap.xml" class="footer-link">XML Sitemap</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-secondary);">Built using native, zero-dependency static page hydration. Fast, accessible, and SEO optimized.</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 CalcAll. All rights reserved. Designed for optimal speed and UX.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Autocomplete Search Initialization -->
+  <script type="module">
+    import { calculators } from '/js/calculators.js';
+    import { initSearch } from '/js/search.js';
+    
+    // Initialize Global Search listeners
+    initSearch(calculators);
+  </script>
+
+  <!-- Page-Specific Script Injection -->
+  
+        <script type="module">
+          import { addRecent } from '/js/recent.js';
+          import { isFavorite, toggleFavorite } from '/js/favorites.js';
+          import { calculators } from '/js/calculators.js';
+
+          // Track recently viewed
+          addRecent('currency-calculator');
+
+          // Setup Favorite Heart button
+          const favBtn = document.getElementById('btn-favorite-toggle');
+          if (favBtn) {
+            if (isFavorite('currency-calculator')) {
+              favBtn.classList.add('active');
+            }
+            favBtn.addEventListener('click', () => {
+              const active = toggleFavorite('currency-calculator');
+              favBtn.classList.toggle('active', active);
+            });
+          }
+
+          // Import runtime and scientific engines
+          const currentCalcId = 'currency-calculator';
+          if ('undefined' === 'scientific') {
+            import('/js/scientific.js').then(module => {
+              module.initScientificCalculator();
+            });
+          } else {
+            import('/js/calculator-runtime.js').then(module => {
+              module.initCalculatorRuntime(currentCalcId, calculators);
+            });
+          }
+        </script>
+      
+
+</body>
+</html>

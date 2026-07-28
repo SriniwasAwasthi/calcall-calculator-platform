@@ -1,0 +1,13 @@
+{
+  "name": "modern-calculators",
+  "version": "1.0.0",
+  "description": "A next-generation scalable calculator ecosystem.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node dev.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

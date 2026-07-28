@@ -1,0 +1,372 @@
+/* Layout rules for calculator inputs, results, tables, and custom controls */
+
+/* Workspace Detail Split */
+.detail-header-block {
+  margin-bottom: var(--space-xl);
+}
+
+.detail-category-badge {
+  display: inline-flex;
+  padding: 4px 10px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-sm);
+}
+
+.detail-description {
+  margin-top: var(--space-sm);
+  font-size: 1.1rem;
+}
+
+/* Workspace Panels */
+.workspace-panel {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.workspace-panel-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Form Controls */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.form-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-input, .form-select {
+  padding: 12px 16px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  font-family: var(--font-sans);
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.form-input:hover, .form-select:hover {
+  border-color: var(--border-hover);
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--primary);
+  background-color: var(--card-bg);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+/* Toggle Switches & Radio Groups */
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  background-color: var(--bg-color);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.radio-btn {
+  display: none;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px var(--space-md);
+  border-radius: calc(var(--radius-md) - 2px);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.radio-btn:checked + .radio-label {
+  background-color: var(--card-bg);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Results Formatting */
+.result-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.result-card {
+  background-color: var(--bg-color);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.result-card.success {
+  border-left-color: var(--success);
+  background-color: var(--success-light);
+}
+
+.result-card.alert {
+  border-left-color: var(--alert);
+  background-color: var(--alert-light);
+}
+
+.result-val {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+.result-lbl {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Visual Gauges and Charts */
+.bmi-gauge-wrapper {
+  margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.bmi-gauge-bar {
+  height: 12px;
+  background: linear-gradient(90deg, #38bdf8 0%, #34d399 25%, #fbbf24 50%, #f87171 75%);
+  border-radius: var(--radius-full);
+  position: relative;
+}
+
+.bmi-gauge-pin {
+  width: 16px;
+  height: 16px;
+  background-color: var(--text-primary);
+  border: 2px solid #ffffff;
+  border-radius: var(--radius-full);
+  position: absolute;
+  top: -2px;
+  transform: translateX(-50%);
+  transition: left var(--transition-slow);
+}
+
+/* Tables (Amortization Sheets) */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: var(--space-md);
+  max-height: 400px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.table-wrapper th {
+  background-color: var(--bg-color);
+  padding: 10px 14px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-color);
+  position: sticky;
+  top: 0;
+}
+
+.table-wrapper td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.table-wrapper tr:last-child td {
+  border-bottom: none;
+}
+
+.table-wrapper tr:hover td {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}
+
+/* SVG Chart Panels */
+.chart-container {
+  width: 100%;
+  height: 220px;
+  margin-top: var(--space-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.chart-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-tooltip {
+  position: absolute;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+  display: none;
+}
+
+/* Scientific keypad styles */
+.scientific-display {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 80px;
+  gap: var(--space-xs);
+}
+
+.sci-expression {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  min-height: 1.5em;
+  word-break: break-all;
+}
+
+.sci-output {
+  font-family: var(--font-sans);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-height: 1.25em;
+  word-break: break-all;
+}
+
+.scientific-keypad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.sci-btn {
+  padding: 14px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.sci-btn:hover {
+  background-color: var(--border-color);
+}
+
+.sci-btn.btn-op {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: rgba(124, 58, 237, 0.15);
+}
+
+.sci-btn.btn-op:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.sci-btn.btn-fn {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  background-color: var(--bg-color);
+  color: var(--text-secondary);
+}
+
+.sci-btn.btn-fn:hover {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.sci-btn.btn-action {
+  background-color: #fca5a5;
+  color: #991b1b;
+  border-color: #f87171;
+}
+
+.sci-btn.btn-action:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.sci-btn.btn-eval {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.sci-btn.btn-eval:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Secondary Panels (Formula / Explanations) */
+.info-section-grid {
+  margin-top: var(--space-xl);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.formula-block {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-family: var(--font-mono);
+  overflow-x: auto;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
