@@ -136,3 +136,22 @@ Thank you so much for visiting this repository and taking the time to explore Ca
 Building this ecosystem has been a journey of precision, user-focused design, and performance optimizations. I hope exploring it brings you inspiration or value. If you have any feedback, suggestions, or just want to connect, please feel free to reach out. 
 
 Wishing you the absolute best in all your endeavors, and thank you once again for stopping by! ✨
+
+---
+
+## 💖 Thank You for Visiting!
+
+> *"Thank you so much for taking the time to explore CalcAll Platform!"* 🌟
+
+Taking your precious time to inspect this project, walk through the features, and review my code means the world to me. Every single repository I build is an opportunity to learn, innovate, and push the boundaries of software engineering.
+
+- 🌟 **Enjoyed the project?** Feel free to leave a **Star** on this repository—your support provides immense motivation to keep building exciting projects!
+- 📬 **Let's Connect:** I am always open to constructive feedback, technical discussions, and exciting engineering opportunities. Feel free to explore my other repositories or connect with me directly on [GitHub](https://github.com/SriniwasAwasthi).
+
+*Wishing you a wonderful day ahead, and thank you once again for stopping by!* ✨
+
+---
+
+<div align="center">
+  <sub>Crafted with passion by <a href="https://github.com/SriniwasAwasthi">Sriniwas Awasthi</a>.</sub>
+</div>
