@@ -157,3 +157,15 @@ Thank you for taking the time to review CalcAll! Engineering an expansive 190+ t
 <div align="center">
   <sub>Engineered with precision and zero dependencies by <a href="https://github.com/SriniwasAwasthi">Sriniwas Awasthi</a>.</sub>
 </div>
+
+## 🏛️ Platform Architecture
+
+```mermaid
+graph TD
+    User["👤 User"] --> UI["🧮 CalcAll Responsive Interface"]
+    UI --> Engine["⚡ Pure JavaScript Calculation Engine"]
+    Engine --> MathMod["📐 Mathematics & Geometry Suite"]
+    Engine --> FinMod["💰 Financial & Loan Amortization Modules"]
+    Engine --> HealthMod["🩺 Health & Fitness Biomarkers"]
+    Engine --> ConstMod["🏗️ Construction & Material Estimators"]
+```
