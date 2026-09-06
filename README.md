@@ -141,24 +141,7 @@ Wishing you the absolute best in all your endeavors, and thank you once again fo
 
 ---
 
-## 💖 Thank You for Calculating with CalcAll!
-
-> *"Zero dependencies. Instant computation. 100% privacy."* 🧮
-
-Thank you for taking the time to review CalcAll! Engineering an expansive 190+ tool calculation engine with a strict zero-dependency architecture and instant client-side math was a masterclass in clean, lightweight, and privacy-respecting software design. Your visit and support are deeply appreciated.
-
-- 🌟 **Appreciate fast, privacy-first web utilities?** Give this repository a star to support independent open-source tools!
-- 📬 **Let's Connect:** I'd love to chat about computational performance, client-side algorithms, and utility web development. Find me on [GitHub](https://github.com/SriniwasAwasthi).
-
-*Wishing you precise calculations, clean code, and a wonderful day!* ✨
-
----
-
-<div align="center">
-  <sub>Engineered with precision and zero dependencies by <a href="https://github.com/SriniwasAwasthi">Sriniwas Awasthi</a>.</sub>
-</div>
-
-## 🏛️ Platform Architecture
+## 🏛️ System Architecture
 
 ```mermaid
 graph TD
@@ -169,3 +152,17 @@ graph TD
     Engine --> HealthMod["🩺 Health & Fitness Biomarkers"]
     Engine --> ConstMod["🏗️ Construction & Material Estimators"]
 ```
+
+---
+
+## 💖 Thank You for Visiting & Exploring CalcAll – Next-Generation Universal Calculator Ecosystem!
+
+> *"Thank you for taking the time to explore this project! Continuous learning, clean craftsmanship, and solving real-world challenges through elegant software are at the core of my developer journey."* 🚀
+
+* 🌟 **Enjoyed this project?** If you found this repository interesting or helpful, please consider giving it a **Star**!
+* 📬 **Let's Connect & Collaborate:** I am actively seeking engineering opportunities, impactful internships, and open-source collaborations. Feel free to connect via [GitHub](https://github.com/SriniwasAwasthi) or [Email](mailto:sriawasthi164@gmail.com).
+
+---
+<div align="center">
+  <sub>Designed & Crafted with Passion by <a href="https://github.com/SriniwasAwasthi"><strong>Sriniwas Awasthi</strong></a> • Continuous Learner & Software Engineer</sub>
+</div>
