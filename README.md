@@ -81,10 +81,10 @@ CalcAll operates using a hybrid **static-site generation (SSG)** and **client-si
     *   As you change numbers, sliders, or drop-downs, the runtime immediately executes the specific math logic defined in the dataset (e.g., `math.js`) and updates the results on screen instantly with no page reload.
 3.  **Collaborative State Sharing:**
     *   Every input modification is synced directly into the browser's URL query parameters in real time.
-    *   You can click **"Copy Link"** to copy the exact URL. When shared with others, the page recovers these values, auto-populates the forms, and runs the calculations immediately.
+    *   You can click **\"Copy Link\"** to copy the exact URL. When shared with others, the page recovers these values, auto-populates the forms, and runs the calculations immediately.
 4.  **LocalStorage Integration:**
     *   **Favorites:** Users can toggle the heart icon on any calculator. The tool's ID is stored in the browser's `localStorage`, allowing the homepage to dynamically display a personalized list of favorite tools.
-    *   **Recents:** The site tracks recently opened calculators and lists them on the homepage.
+    *   **Recents:** The site tracks recently opened calculators and lists them on the homepage.\
 5.  **Dynamic Rendering:**
     *   High-performance SVG path strings are generated in the browser to draw vector charts for loan schedules or compound growth charts on-the-fly.
 
@@ -117,7 +117,6 @@ If you have Node.js installed, you can build and run the development server with
     # or
     node dev.js
     ```
-3.  Open the local server URL in your browser. Any edits in the `src/` directory will trigger the watcher to auto-rebuild the pages.
 
 ### Using Python (Fallback Server)
 If Node.js is not installed on your system, you can run the pre-built site using Python's built-in HTTP server:
@@ -125,19 +124,6 @@ If Node.js is not installed on your system, you can run the pre-built site using
     ```bash
     python -m http.server 3000 --directory dist
     ```
-2.  Open the local server URL in your web browser.
-
----
-
-## 💝 Gratitude & Thanks
-
-Thank you so much for visiting this repository and taking the time to explore CalcAll! Your presence and interest in this project are sincerely appreciated. 
-
-Building this ecosystem has been a journey of precision, user-focused design, and performance optimizations. I hope exploring it brings you inspiration or value. If you have any feedback, suggestions, or just want to connect, please feel free to reach out. 
-
-Wishing you the absolute best in all your endeavors, and thank you once again for stopping by! ✨
-
----
 
 ---
 
@@ -146,7 +132,8 @@ Wishing you the absolute best in all your endeavors, and thank you once again fo
 ```mermaid
 graph TD
     User["👤 User"] --> UI["🧮 CalcAll Responsive Interface"]
-    UI --> Engine["⚡ Pure JavaScript Calculation Engine"]
+    Engine["⚡ Pure JavaScript Calculation Engine"]
+    UI --> Engine
     Engine --> MathMod["📐 Mathematics & Geometry Suite"]
     Engine --> FinMod["💰 Financial & Loan Amortization Modules"]
     Engine --> HealthMod["🩺 Health & Fitness Biomarkers"]
@@ -157,10 +144,10 @@ graph TD
 
 ## 💖 Thank You for Visiting & Exploring CalcAll – Next-Generation Universal Calculator Ecosystem!
 
-> *"Thank you for taking the time to explore this project! Continuous learning, clean craftsmanship, and solving real-world challenges through elegant software are at the core of my developer journey."* 🚀
+> *\"Thank you for taking the time to explore this project! Continuous learning, clean craftsmanship, and solving real-world challenges through elegant software are at the core of my developer journey.\"* 🚀
 
 * 🌟 **Enjoyed this project?** If you found this repository interesting or helpful, please consider giving it a **Star**!
-* 📬 **Let's Connect & Collaborate:** I am actively seeking engineering opportunities, impactful internships, and open-source collaborations. Feel free to connect via [GitHub](https://github.com/SriniwasAwasthi) or [Email](mailto:sriawasthi164@gmail.com)
+* 📬 **Let's Connect & Collaborate:** I am actively seeking engineering opportunities, impactful internships, and open-source collaborations. Feel free to connect via [GitHub](https://github.com/SriniwasAwasthi) or [Email](mailto:sriawasthi164@gmail.com)\
   * 🌐 **LinkedIn:** [https://www.linkedin.com/in/sriniwas-awasthi/](https://www.linkedin.com/in/sriniwas-awasthi/).
 
 ---
