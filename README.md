@@ -81,10 +81,10 @@ CalcAll operates using a hybrid **static-site generation (SSG)** and **client-si
     *   As you change numbers, sliders, or drop-downs, the runtime immediately executes the specific math logic defined in the dataset (e.g., `math.js`) and updates the results on screen instantly with no page reload.
 3.  **Collaborative State Sharing:**
     *   Every input modification is synced directly into the browser's URL query parameters in real time.
-    *   You can click **\"Copy Link\"** to copy the exact URL. When shared with others, the page recovers these values, auto-populates the forms, and runs the calculations immediately.
+    *   You can click **"Copy Link"** to copy the exact URL. When shared with others, the page recovers these values, auto-populates the forms, and runs the calculations immediately.
 4.  **LocalStorage Integration:**
     *   **Favorites:** Users can toggle the heart icon on any calculator. The tool's ID is stored in the browser's `localStorage`, allowing the homepage to dynamically display a personalized list of favorite tools.
-    *   **Recents:** The site tracks recently opened calculators and lists them on the homepage.\
+    *   **Recents:** The site tracks recently opened calculators and lists them on the homepage.
 5.  **Dynamic Rendering:**
     *   High-performance SVG path strings are generated in the browser to draw vector charts for loan schedules or compound growth charts on-the-fly.
 
@@ -144,10 +144,10 @@ graph TD
 
 ## 💖 Thank You for Visiting & Exploring CalcAll – Next-Generation Universal Calculator Ecosystem!
 
-> *\"Thank you for taking the time to explore this project! Continuous learning, clean craftsmanship, and solving real-world challenges through elegant software are at the core of my developer journey.\"* 🚀
+> *"Thank you for taking the time to explore this project! Continuous learning, clean craftsmanship, and solving real-world challenges through elegant software are at the core of my developer journey."* 🚀
 
 * 🌟 **Enjoyed this project?** If you found this repository interesting or helpful, please consider giving it a **Star**!
-* 📬 **Let's Connect & Collaborate:** I am actively seeking engineering opportunities, impactful internships, and open-source collaborations. Feel free to connect via [GitHub](https://github.com/SriniwasAwasthi) or [Email](mailto:sriawasthi164@gmail.com)\
+* 📬 **Let's Connect & Collaborate:** I am actively seeking engineering opportunities, impactful internships, and open-source collaborations. Feel free to connect via [GitHub](https://github.com/SriniwasAwasthi) or [Email](mailto:sriawasthi164@gmail.com)
   * 🌐 **LinkedIn:** [https://www.linkedin.com/in/sriniwas-awasthi/](https://www.linkedin.com/in/sriniwas-awasthi/).
 
 ---
